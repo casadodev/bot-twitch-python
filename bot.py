@@ -1,13 +1,11 @@
 # bot.py
 import asyncio
 import configparser
-import os  # for importing env vars for the bot to use
 import random
 import requests
 import time
 from requests_html import HTMLSession
 from twitchio.ext import commands
-from twitchio.abcs import Messageable
 
 
 config = configparser.ConfigParser()
@@ -245,9 +243,17 @@ async def fn_climaTempo(ctx):
     horario_atual = req_selecionada.html.find('#wob_dts')[0].text
     tipo_clima = req_selecionada.html.find('#wob_dc')[0].text
 
+    # as unidades são especificadas em spans, precisamos inspecionar qual está
+    # visível
+    spans_unidade = req_selecionada.html.find('.wob-unit > span.wob_t')
+    unidade = 'ºC'
+    for span_unidade in spans_unidade:
+        if span_unidade.attrs['style'] == 'display:inline':
+            unidade = span_unidade.text
+
     print(f'Clima agora em {cidade_selecionada}: {temperatura_atual}')
 
-    await ctx.send(f'/me Agora na cidade {cidade_selecionada}, é {horario_atual} e está {temperatura_atual}ºC, com um clima {tipo_clima}')
+    await ctx.send(f'/me Agora na cidade {cidade_selecionada}, é {horario_atual} e está {temperatura_atual}{unidade}, com um clima {tipo_clima}')
     # await ctx.send('Está frio pra caramba em Itajaí! - teste em produção com sucesso')
 
 
@@ -417,7 +423,7 @@ async def event_message(ctx):
 
     if 'lurk' in ctx.content.lower():
         await ctx.channel.send(f"Opa @{ctx.author.name}! Tamo junto ae no lurk. Já ajuda pakas.")
-    
+
     if 'bolacha' in ctx.content.lower():
         await ctx.channel.send(f'/me @{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!')
 
