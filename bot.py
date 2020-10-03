@@ -139,7 +139,7 @@ async def fn_comparaJavaPython(ctx):
 
 
 #Comando cachorro
-@bot.comand(name='cachorro')
+@bot.command(name='cachorro')
 async def fn_cachorro(ctx):
     latidos = latidos + 1
     await ctx.send(f'/me O cachorro já latiu {latidos} vez(es)')
