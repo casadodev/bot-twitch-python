@@ -11,6 +11,7 @@ twitchio = "^1.1.0"
 requests-html = "^0.10.0"
 
 [tool.poetry.dev-dependencies]
+pre-commit = "^2.7.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
