@@ -138,7 +138,7 @@ async def fn_comparaJavaPython(ctx):
     await ctx.send('/me comparando java x python - desenvolvendo')
 
 
-#Comando cachorro
+# Comando cachorro
 @bot.command(name='cachorro')
 async def fn_cachorro(ctx):
     global latidos
@@ -445,6 +445,7 @@ async def event_message(ctx):
         await ctx.channel.send(
             f'/me @{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!',
         )
+
 
 @bot.command(name='test')
 async def test(ctx):
