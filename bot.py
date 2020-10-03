@@ -30,7 +30,7 @@ bot = commands.Bot(
 
 # globais
 
-
+latidos = 0
 pessoas_online = []
 count_pessoa = []
 
@@ -136,6 +136,13 @@ async def fn_adicionaMusica(ctx):
 @bot.command(name='javaxpython')
 async def fn_comparaJavaPython(ctx):
     await ctx.send(f'/me comparando java x python - desenvolvendo')
+
+
+#Comando cachorro
+@bot.comand(name='cachorro')
+async def fn_cachorro(ctx):
+    latidos = latidos + 1
+    await ctx.send(f'/me O cachorro já latiu {latidos} vez(es)')
 
 
 # TODO: comando solicitado pelo @Tairritadotio
@@ -420,7 +427,6 @@ async def event_message(ctx):
 
     if 'bolacha' in ctx.content.lower():
         await ctx.channel.send(f'/me @{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!')
-
 
 @bot.command(name='test')
 async def test(ctx):
