@@ -1,0 +1,35 @@
+name: Build
+on:
+  push:
+    branches:
+      - master
+
+  pull_request:
+    branches:
+      - master
+jobs:
+  bootstrap:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-20.04
+          - macos-latest
+          - windows-latest
+
+    name: run-precommit
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2.3.3
+
+      - uses: actions/setup-python@v2.1.3
+        with:
+          python-version: "3.x"
+
+      - name: install dependencies
+        run: |
+          pip install poetry
+          poetry install
+
+      - name: run pre-commit
+        run: |
+          poetry run  pre-commit run --all-files --show-diff-on-failure
