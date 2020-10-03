@@ -140,14 +140,8 @@ async def fn_comparaJavaPython(ctx):
 
 # TODO: comando solicitado pelo @Tairritadotio
 @bot.command(name='dica')
-async def fn_garenLindo(ctx):
+async def fn_dica(ctx):
     await ctx.send('/me Se der erro no seu código poder ser que algo esteja errado ou algo não esteja certo.')
-
-
-# TODO: comando solicitado pelo @GARENACIO
-@bot.command(name='garenlindo')
-async def fn_garenLindo(ctx):
-    await ctx.send('/me Garen é muito lindo slk bixo!!!!!!!!')
 
 
 # comando para dicas de filmes
