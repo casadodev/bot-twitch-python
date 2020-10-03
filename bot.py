@@ -60,24 +60,10 @@ async def event_ready():
             await asyncio.sleep(20.0)
 
 
-@bot.command(name='points')
-async def fn_points(ctx):
-    return
-
-
-@bot.command(name='sh-so')
-async def fn_shso(ctx):
-    return
-
-
-@bot.command(name='addpoints')
-async def fn_addpoints(ctx):
-    return
-
-
-@bot.command(name='commands')
-async def fn_addcommands(ctx):
-    return ''
+# Trata todos erros, por exemplo, comando inexistente
+@bot.event
+async def event_command_error(ctx, error):
+    pass
 
 
 # @bot.command(name='tenhafoco')
