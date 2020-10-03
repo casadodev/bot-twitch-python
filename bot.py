@@ -2,11 +2,11 @@
 import asyncio
 import configparser
 import random
-import requests
 import time
+
+import requests
 from requests_html import HTMLSession
 from twitchio.ext import commands
-
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -17,11 +17,11 @@ inicia_canal = 'casadodev'
 
 bot = commands.Bot(
     # set up the bot
-    irc_token = config['bot']['token'],
-    client_id = config['bot']['client_id'],
-    nick = nick_bot,
-    prefix = '!',
-    initial_channels = [inicia_canal]
+    irc_token=config['bot']['token'],
+    client_id=config['bot']['client_id'],
+    nick=nick_bot,
+    prefix='!',
+    initial_channels=[inicia_canal],
 )
 
 
@@ -46,8 +46,14 @@ async def event_ready():
     while True:
         'Mostrando os comandos disponíveis no bot'
 
-        msg_aleatoria = list(open('files/texto_engajamento.txt', encoding='utf-8'))
-        comandos = '/me os comandos do bot são: "exclamação +" ban, clima, piada, traduzir (+texto português), translate (+text english), motivar, horoscopo, susto, filme. Tudo desenvolvido nas lives e em python!'
+        msg_aleatoria = list(
+            open('files/texto_engajamento.txt', encoding='utf-8'),
+        )
+        comandos = (
+            '/me os comandos do bot são: "exclamação +" ban, '
+            'clima, piada, traduzir (+texto português), translate '
+            '(+text english), motivar, horoscopo, susto, filme. Tudo desenvolvido nas lives e em python!'
+        )
 
         await ws.send_privmsg(inicia_canal, comandos)
         await asyncio.sleep(500.0)
@@ -89,6 +95,7 @@ async def fn_whatsapp(ctx):
 async def fn_discord(ctx):
     await ctx.send_me('Grupo no discord https://mercadodeti.com.br/discord')
 
+
 @bot.command(name='instagram')
 async def fn_instagram(ctx):
     await ctx.send_me('Perfil no Inta https://instagram.com/casadodev')
@@ -96,13 +103,20 @@ async def fn_instagram(ctx):
 
 @bot.command(name='sorteio')
 async def fn_sorteio(ctx):
-    await ctx.send_me('Sorteios de cursos da Udemy de até R$40. Subs/Inscritos tem 3x mais chances de ganhar. O sorteio vai ser só para quem segue o canal a mais de 2h, ou inscritos. Se inscreva gratuitamente com seu Amazon Prime!')
+    await ctx.send_me(
+        'Sorteios de cursos da Udemy de até R$40. Subs/Inscritos tem 3x mais chances de ganhar. '
+        'O sorteio vai ser só para quem segue o canal a mais de 2h, ou inscritos. '
+        'Se inscreva gratuitamente com seu Amazon Prime!',
+    )
 
 
 # Super susto do @ChicoCodes
 @bot.command(name='tapao')
 async def fn_sustoTapao(ctx):
-    await ctx.send_me('Veja o clipe do super susto que o @ChicoCodes me deu e quase tudo https://clips.twitch.tv/CoweringSpunkyMochaSpicyBoy hahaha')
+    await ctx.send_me(
+        'Veja o clipe do super susto que o @ChicoCodes me deu e '
+        'quase tudo https://clips.twitch.tv/CoweringSpunkyMochaSpicyBoy hahaha',
+    )
 
 
 # TODO: pedido de músicas no canal - por @Super_Feliz
@@ -121,10 +135,10 @@ async def fn_adicionaMusica(ctx):
 # coloca javaxpython pra vc comentar o que é melhor ou pior das linguagens, não sei , o que acha?
 @bot.command(name='javaxpython')
 async def fn_comparaJavaPython(ctx):
-    await ctx.send(f'/me comparando java x python - desenvolvendo')
+    await ctx.send('/me comparando java x python - desenvolvendo')
 
 
-#Comando cachorro
+# Comando cachorro
 @bot.command(name='cachorro')
 async def fn_cachorro(ctx):
     global latidos
@@ -151,6 +165,8 @@ async def fn_filme(ctx):
 
 # TODO: traduzir texto por - PO: @ChicoCodes, com grande ajuda do MechanicallyDev
 'ENTREGA DO MPV 1 PARA O CHICOCODES'
+
+
 @bot.command(name='traduzir')
 async def fn_traduzir(ctx):
     'Traduz o texto para inglês'
@@ -183,6 +199,8 @@ async def fn_biscoito(ctx):
 
 # TODO: traduzir texto por - PO: @ChicoCodes, com grande ajuda do MechanicallyDev
 'ENTREGA DO MPV 1 PARA O CHICOCODES'
+
+
 @bot.command(name='translate')
 async def fn_translate(ctx):
     'Traduz o texto para portugues'
@@ -224,7 +242,9 @@ async def fn_climaTempo(ctx):
 
     cidade_solicitada = '+'.join(ctx.content.split(' ')[1:])
 
-    req_selecionada = session.get(f'https://www.google.com.br/search?q=tempo+{cidade_solicitada}')
+    req_selecionada = session.get(
+        f'https://www.google.com.br/search?q=tempo+{cidade_solicitada}',
+    )
 
     cidade_selecionada = req_selecionada.html.find('#wob_loc')[0].text
     temperatura_atual = req_selecionada.html.find('#wob_tm')[0].text
@@ -241,7 +261,10 @@ async def fn_climaTempo(ctx):
 
     print(f'Clima agora em {cidade_selecionada}: {temperatura_atual}')
 
-    await ctx.send(f'/me Agora na cidade {cidade_selecionada}, é {horario_atual} e está {temperatura_atual}{unidade}, com um clima {tipo_clima}')
+    await ctx.send(
+        f'/me Agora na cidade {cidade_selecionada}, é {horario_atual} '
+        f'e está {temperatura_atual}{unidade}, com um clima {tipo_clima}',
+    )
     # await ctx.send('Está frio pra caramba em Itajaí! - teste em produção com sucesso')
 
 
@@ -258,7 +281,9 @@ async def fn_piadas(ctx):
     #         'Content-type': 'application/json'
     #     }).json()
 
-    piada_selecionada = requests.get('https://api-de-charadas.fredes.now.sh').json()
+    piada_selecionada = requests.get(
+        'https://api-de-charadas.fredes.now.sh',
+    ).json()
 
     print(f"pergunta: {piada_selecionada['question']}")
     print(f"resposta: {piada_selecionada['answer']}")
@@ -279,7 +304,8 @@ async def fn_motivacao(ctx):
     req_selecionada = session.get('https://motivaai.nandomoreira.dev/')
 
     motivacao_selecionada = req_selecionada.html.find(
-        'blockquote')[0].text.split('\n')
+        'blockquote',
+    )[0].text.split('\n')
 
     frase = motivacao_selecionada[0]
     autor = motivacao_selecionada[1]
@@ -294,7 +320,8 @@ async def fn_add_mensagem_engajamento(ctx):
     if len(ctx.content) > 30:
         # gravar a mensagem de ban comprada pelo usuário
         arquivo_texto_engajamento = open(
-            'files/texto_engajamento.txt', 'a+', encoding='utf-8')
+            'files/texto_engajamento.txt', 'a+', encoding='utf-8',
+        )
 
         arquivo_texto_engajamento.write(f"{ctx.content.lower()[12:]} \n")
         # TODO: CRIAR MÉTODO PARA ADICIONAR EM VOTAÇÃO NO CHAT
@@ -326,7 +353,8 @@ async def fn_ban(ctx):
         tipo_ban = random.choice(list(lista_ban))
 
         print(
-            f"comando de banir executado por @{ctx.author.name} para o @{banido}")
+            f"comando de banir executado por @{ctx.author.name} para o @{banido}",
+        )
 
         await ctx.send(f"{banido} {tipo_ban}")
         # await Messageable.timeout(banido, 15, tipo_ban)
@@ -340,7 +368,8 @@ async def fn_addban(ctx):
         # gravar a mensagem de ban comprada pelo usuário
 
         arquivo_texto_bans = open(
-            'files/texto_moderacao_bans.txt', 'a+', encoding='utf-8')
+            'files/texto_moderacao_bans.txt', 'a+', encoding='utf-8',
+        )
 
         arquivo_texto_bans.write(f"{ctx.content.lower()[8:]} \n")
         # TODO: CRIAR MÉTODO PARA ADICIONAR EM VOTAÇÃO NO CHAT
@@ -413,7 +442,10 @@ async def event_message(ctx):
         await ctx.channel.send(f"Opa @{ctx.author.name}! Tamo junto ae no lurk. Já ajuda pakas.")
 
     if 'bolacha' in ctx.content.lower():
-        await ctx.channel.send(f'/me @{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!')
+        await ctx.channel.send(
+            f'/me @{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!',
+        )
+
 
 @bot.command(name='test')
 async def test(ctx):
@@ -422,4 +454,3 @@ async def test(ctx):
 
 if __name__ == "__main__":
     bot.run()
-
