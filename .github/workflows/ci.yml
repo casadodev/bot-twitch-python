@@ -25,10 +25,30 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: install dependencies
+      - name: Get full python version
+        id: full-python-version
+        run: |
+          echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info[:3]))")
+
+      - name: install poetry
         run: |
           pip install poetry
-          poetry install
+          poetry config virtualenvs.in-project true
+
+      - name: poetry cache
+        uses: actions/cache@v2.1.1
+        with:
+          path: .venv
+          key: venv-${{ matrix.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: install dependencies
+        run: poetry install
+
+      - name: pre-commit cache
+        uses: actions/cache@v2.1.1
+        with:
+          path: ~/.cache/pre-commit
+          key: pre-commit|${{ steps.full-python-version.outputs.version }}|${{ hashFiles('.pre-commit-config.yaml') }}
 
       - name: run pre-commit
         run: |
