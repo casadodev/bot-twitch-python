@@ -30,7 +30,7 @@ bot = commands.Bot(
 
 # globais
 
-
+latidos = 0
 pessoas_online = []
 count_pessoa = []
 
@@ -136,6 +136,12 @@ async def fn_adicionaMusica(ctx):
 @bot.command(name='javaxpython')
 async def fn_comparaJavaPython(ctx):
     await ctx.send(f'/me comparando java x python - desenvolvendo')
+
+
+#Comando cachorro
+@bot.comand(name='cachorro')
+async def fn_cachorro(ctx):
+    await ctx.send(f'/me O cachorro já latiu {latidos} vez(es)')
 
 
 # TODO: comando solicitado pelo @Tairritadotio
