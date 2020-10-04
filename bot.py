@@ -50,7 +50,7 @@ async def event_ready():
         comandos = '/me os comandos do bot são: "exclamação +" ban, clima, piada, traduzir (+texto português), translate (+text english), motivar, horoscopo, susto, filme. Tudo desenvolvido nas lives e em python!'
 
         await ws.send_privmsg(inicia_canal, comandos)
-        await asyncio.sleep(280.0)
+        await asyncio.sleep(500.0)
 
         if len(msg_aleatoria) > 0:
             'Mostrando mensagens de engajamento no chat'
