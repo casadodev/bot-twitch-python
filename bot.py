@@ -349,14 +349,14 @@ async def fn_ban(ctx):
     if len(ctx.content.split(' ')[1]) > 3:
         lista_ban = open('files/texto_bans.txt', encoding='utf-8')
 
-        banido = ctx.content.lower().split(' ')[1]
+        _, _, alvo = ctx.contenxt.lower().partition(' ')
         tipo_ban = random.choice(list(lista_ban))
 
         print(
-            f"comando de banir executado por @{ctx.author.name} para o @{banido}",
+            f"comando de banir executado por @{ctx.author.name} para o @{alvo}",
         )
 
-        await ctx.send(f"{banido} {tipo_ban}")
+        await ctx.send(f"{alvo} {tipo_ban}")
         # await Messageable.timeout(banido, 15, tipo_ban)
         # await ctx.send(f"/timeout {banido} 20")
         # await ctx.send(f".timeout {banido} 20")
