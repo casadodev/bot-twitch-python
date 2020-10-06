@@ -26,6 +26,8 @@ bot = commands.Bot(
 
 # globais
 counters = {}
+pessoas_online = []
+count_pessoa = []
 
 
 @bot.event
