@@ -97,6 +97,12 @@ async def fn_instagram(ctx):
     await ctx.send_me('Perfil no Inta https://instagram.com/casadodev')
 
 
+@bot.command(name='evento')
+async def fn_evento(ctx):
+    await ctx.send_me('Dia 23/10 as 17:00h , venha participar do HacktoberFest do CasadoDev')
+
+
+
 @bot.command(name='sorteio')
 async def fn_sorteio(ctx):
     await ctx.send_me(
