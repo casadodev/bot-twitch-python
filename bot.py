@@ -115,6 +115,13 @@ async def fn_sustoTapao(ctx):
     )
 
 
+@bot.command(name='fiature')
+async def fn_feature(ctx):
+    await ctx.send_me(
+        'Aprenda a pronunciar feature! https://clips.twitch.tv/SmellyPluckyBubbleteaStinkyCheese',
+    )
+
+
 # TODO: pedido de músicas no canal - por @Super_Feliz
 @bot.command(name='musica')
 async def fn_adicionaMusica(ctx):
