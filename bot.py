@@ -85,6 +85,12 @@ async def event_command_error(ctx, error):
 #         await asyncio.sleep(750.0)
 
 
+@bot.command(name='steam')
+async def fn_steam(ctx):
+    link = 'https://s.team/p/gdmd-fkhb/fmdrjvgt'
+    await ctx.send_me(f'/me Jogue conosco usando o código "1115830096" ou usando o link {link}')
+
+
 @bot.command(name='wp')
 async def fn_whatsapp(ctx):
     await ctx.send_me('Grupo no whatsapp https://chat.whatsapp.com/GjztcHTQiXb0MNZutOhCOY')
@@ -150,6 +156,7 @@ def create_counter(*, name, prefix, singular='vez', plural='vezes', start_value=
 
 create_counter(name='cachorro', prefix='O cachorro já latiu')
 create_counter(name='risada', prefix='A Mirele já riu')
+create_counter(name='taxado', prefix='O Casado já foi taxado')
 
 
 # TODO: comando solicitado pelo @Tairritadotio
