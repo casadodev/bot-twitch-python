@@ -24,11 +24,7 @@ bot = commands.Bot(
     initial_channels=[inicia_canal],
 )
 
-# parou
-
-
 # globais
-
 counters = {}
 pessoas_online = []
 count_pessoa = []
@@ -49,13 +45,14 @@ async def event_ready():
             open('files/texto_engajamento.txt', encoding='utf-8'),
         )
         comandos = (
-            '/me os comandos do bot são: "exclamação +" ban, '
-            'clima, piada, traduzir (+texto português), translate '
-            '(+text english), motivar, horoscopo, susto, filme. Tudo desenvolvido nas lives e em python!'
+            '/me os comandos do bot são "exclamação + :" ban +usuário, '
+            'clima +local, piada, traduzir +mensagem, translate +message, '
+            'motivar, horoscopo +signo, susto, filme. '
+            'Tudo desenvolvido nas lives e em python!'
         )
 
         await ws.send_privmsg(inicia_canal, comandos)
-        await asyncio.sleep(500.0)
+        await asyncio.sleep(480.0)
 
         if len(msg_aleatoria) > 0:
             'Mostrando mensagens de engajamento no chat'
@@ -71,11 +68,6 @@ async def event_command_error(ctx, error):
     pass
 
 
-# @bot.command(name='tenhafoco')
-# async def fn_pararBesteira(ctx):
-#     pessoa = ctx.
-
-
 @bot.command(name='steam')
 async def fn_steam(ctx):
     link = 'https://s.team/p/gdmd-fkhb/fmdrjvgt'
@@ -88,24 +80,24 @@ async def fn_bot(ctx):
     await ctx.send_me(f'Deseja ajudar na construção do bot, acesse o link e torne-se um contribuidor{link}')
 
 
-@bot.command(name='wp')
+@bot.command(name='botwp')
 async def fn_whatsapp(ctx):
     await ctx.send_me('Grupo no whatsapp https://chat.whatsapp.com/GjztcHTQiXb0MNZutOhCOY')
 
 
-@bot.command(name='discord')
+@bot.command(name='botdiscord')
 async def fn_discord(ctx):
     await ctx.send_me('Grupo no discord https://mercadodeti.com.br/discord')
 
 
-@bot.command(name='instagram')
+@bot.command(name='botinstagram')
 async def fn_instagram(ctx):
     await ctx.send_me('Perfil no Inta https://instagram.com/casadodev')
 
 
 @bot.command(name='evento')
 async def fn_evento(ctx):
-    await ctx.send_me('Dia 23/10 as 17:00h , venha participar do HacktoberFest do CasadoDev')
+    await ctx.send_me('Dia 23/10 as 17H00, venha participar do HacktoberFest do CasadoDev')
 
 
 @bot.command(name='sorteio')
@@ -136,7 +128,6 @@ async def fn_feature(ctx):
 # TODO: pedido de músicas no canal - por @Super_Feliz
 @bot.command(name='musica')
 async def fn_adicionaMusica(ctx):
-
     await ctx.send('Está sendo desenvolvido comando para tocar as músicas no canal')
 
 
@@ -380,9 +371,6 @@ async def fn_ban(ctx):
         )
 
         await ctx.send(f"{alvo} {tipo_ban}")
-        # await Messageable.timeout(banido, 15, tipo_ban)
-        # await ctx.send(f"/timeout {banido} 20")
-        # await ctx.send(f".timeout {banido} 20")
 
 
 @bot.command(name='addban')
@@ -472,7 +460,7 @@ async def event_message(ctx):
 
 @bot.command(name='test')
 async def test(ctx):
-    await ctx.send('teste passou.')
+    await ctx.send('teste passou. xD')
 
 
 if __name__ == "__main__":
