@@ -1,6 +1,7 @@
 # bot.py
 import asyncio
 import configparser
+import functools
 import random
 import time
 
@@ -23,7 +24,6 @@ bot = commands.Bot(
     prefix='!',
     initial_channels=[inicia_canal],
 )
-
 
 # parou
 
@@ -138,12 +138,31 @@ async def fn_comparaJavaPython(ctx):
     await ctx.send('/me comparando java x python - desenvolvendo')
 
 
+counters = {}
+
+
+def counter(*, name, start_value=0):
+    def counter_decorator(fn):
+        @functools.wraps(fn)
+        @bot.command(name=name)
+        async def counter_wrapper(ctx):
+            current = counters.get(name, start_value)
+            current += 1
+            counters[name] = current
+            await fn(ctx, current)
+        return counter_wrapper
+    return counter_decorator
+
+
 # Comando cachorro
-@bot.command(name='cachorro')
-async def fn_cachorro(ctx):
-    global latidos
-    latidos += 1
+@counter(name='cachorro')
+async def fn_cachorro(ctx, latidos):
     await ctx.send(f'/me O cachorro já latiu {latidos} vez(es)')
+
+
+@counter(name='risada')
+async def fn_risada(ctx, risadas):
+    await ctx.send(f'/me A Mirele já riu {risadas} vez(es)')
 
 
 # TODO: comando solicitado pelo @Tairritadotio
