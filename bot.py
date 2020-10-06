@@ -25,11 +25,7 @@ bot = commands.Bot(
 )
 
 # globais
-
 counters = {}
-# pessoas_online = []
-# count_pessoa = []
-
 
 @bot.event
 async def event_ready():
@@ -129,7 +125,6 @@ async def fn_feature(ctx):
 # TODO: pedido de músicas no canal - por @Super_Feliz
 @bot.command(name='musica')
 async def fn_adicionaMusica(ctx):
-
     await ctx.send('Está sendo desenvolvido comando para tocar as músicas no canal')
 
 
@@ -373,9 +368,6 @@ async def fn_ban(ctx):
         )
 
         await ctx.send(f"{alvo} {tipo_ban}")
-        # await Messageable.timeout(banido, 15, tipo_ban)
-        # await ctx.send(f"/timeout {banido} 20")
-        # await ctx.send(f".timeout {banido} 20")
 
 
 @bot.command(name='addban')
@@ -465,7 +457,7 @@ async def event_message(ctx):
 
 @bot.command(name='test')
 async def test(ctx):
-    await ctx.send('teste passou.')
+    await ctx.send('teste passou. xD')
 
 
 if __name__ == "__main__":
