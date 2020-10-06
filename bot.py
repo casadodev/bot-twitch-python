@@ -4,6 +4,7 @@ import configparser
 import random
 import time
 
+
 import requests
 from requests_html import HTMLSession
 from twitchio.ext import commands
@@ -83,6 +84,12 @@ async def event_command_error(ctx, error):
 #         print('Ad iniciado')
 #         await ctx.send_me('Eu iniciei um ad. Diz ae se você Tankou :)')
 #         await asyncio.sleep(750.0)
+
+
+@bot.command(name='steam')
+async def fn_steam(ctx):
+    link = 'https://s.team/p/gdmd-fkhb/fmdrjvgt'
+    await ctx.send_me('/me Jogue conosco usando o codigo "1115830096" ou usando o link {link}')
 
 
 @bot.command(name='wp')
