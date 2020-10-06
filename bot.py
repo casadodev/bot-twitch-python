@@ -76,15 +76,6 @@ async def event_command_error(ctx, error):
 #     pessoa = ctx.
 
 
-# @bot.command(name='ad')
-# async def fn_ad(ctx):
-#     while True:
-#         await ctx.channel.send('/commercial 30')
-#         print('Ad iniciado')
-#         await ctx.send_me('Eu iniciei um ad. Diz ae se você Tankou :)')
-#         await asyncio.sleep(750.0)
-
-
 @bot.command(name='steam')
 async def fn_steam(ctx):
     link = 'https://s.team/p/gdmd-fkhb/fmdrjvgt'
@@ -350,6 +341,7 @@ async def fn_add_mensagem_engajamento(ctx):
 # foi uma ótima idéia do @Falvern_
 @bot.command(name='unban')
 async def fn_unBan(ctx):
+    # TODO: implementar o método anti-ban
     frase = 'invoca carta imbanivel e não pode ser banido!'
     await ctx.send(f"@{ctx.author.name} {frase}")
 
@@ -362,7 +354,7 @@ async def fn_ban(ctx):
     if len(ctx.content.split(' ')[1]) > 3:
         lista_ban = open('files/texto_bans.txt', encoding='utf-8')
 
-        _, _, alvo = ctx.contenxt.lower().partition(' ')
+        _, _, alvo = ctx.content.lower().partition(' ')
         tipo_ban = random.choice(list(lista_ban))
 
         print(
