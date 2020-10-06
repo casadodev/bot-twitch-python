@@ -35,6 +35,6 @@ Mandem Issues, PRs, salves nas lives.
 
 > Chat bot desenvolvido em python durante as lives, com todos os comandos sugeridos pela galera show, e portado 100% para open source!
 
-#### Ah, e galera, atualizem aqui o Readme com os canais de vocês :)
+#### Ahh! Galera, atualizem aqui o Readme com os canais de vocês :) e continuem contruibuindo
 
 ----
