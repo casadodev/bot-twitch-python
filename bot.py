@@ -77,7 +77,7 @@ async def fn_steam(ctx):
 @bot.command(name='bot')
 async def fn_bot(ctx):
     link = 'https://github.com/casadodev/bot-twitch-python'
-    await ctx.send_me(f'Deseja ajudar na construção do bot, acesse o link e torne-se um contribuidor{link}')
+    await ctx.send_me(f'Deseja ajudar na construção do bot!? acesse o link e torne-se um contribuidor{link}')
 
 
 @bot.command(name='botwp')
@@ -97,14 +97,14 @@ async def fn_instagram(ctx):
 
 @bot.command(name='evento')
 async def fn_evento(ctx):
-    await ctx.send_me('Dia 23/10 as 17H00, venha participar do HacktoberFest do CasadoDev')
+    await ctx.send_me('Dia 23/10 as 17:00h, venha participar do HacktoberFest do CasadoDev')
 
 
 @bot.command(name='sorteio')
 async def fn_sorteio(ctx):
     await ctx.send_me(
         'Sorteios de cursos da Udemy de até R$40. Subs/Inscritos tem 3x mais chances de ganhar. '
-        'O sorteio vai ser só para quem segue o canal a mais de 2h, ou inscritos. '
+        'O sorteio está disponível apenas para quem segue o canal a mais de 2h, ou inscritos. '
         'Se inscreva gratuitamente com seu Amazon Prime!',
     )
 
