@@ -30,7 +30,7 @@ Usem, ajudem a desenvolver novas "features"
 Mandem Issues, PRs, salves nas lives.
 
 - [Issues](https://github.com/casadodev/bot-twitch-python/issues) :question:
-- [Live Twitch](https://www.twitch.tv/casadodev)
+- [Live Twitch](https://www.twitch.tv/casadodev) :tv:
 <!-- https://www.twitch.tv/casadodev -->
 
 > Chat bot desenvolvido em python durante as lives, com todos os comandos sugeridos pela galera show, e portado 100% para open source!
