@@ -36,7 +36,7 @@ async def event_ready():
     print(f"@{nick_bot} está online!")
     ws = bot._ws  # só é chamado no evento inicial
 
-    await ws.send_privmsg(inicia_canal, 'O bot está online!')
+    await ws.send_privmsg(inicia_canal, 'Opa, nosso bot está online!')
 
     while True:
         'Mostrando os comandos disponíveis no bot'
