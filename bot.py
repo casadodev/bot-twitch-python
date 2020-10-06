@@ -140,6 +140,7 @@ async def fn_comparaJavaPython(ctx):
 
 counters = {}
 
+
 def counter(*, name, start_value=0):
     def counter_decorator(fn):
         @functools.wraps(fn)
@@ -157,6 +158,11 @@ def counter(*, name, start_value=0):
 @counter(name='cachorro')
 async def fn_cachorro(ctx, latidos):
     await ctx.send(f'/me O cachorro já latiu {latidos} vez(es)')
+
+
+@counter(name='risadas')
+async def fn_risada(ctx, risadas):
+    await ctx.send(f'/me A Mirele já riu {risadas} vez(es)')
 
 
 # TODO: comando solicitado pelo @Tairritadotio
