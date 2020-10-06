@@ -1,6 +1,8 @@
 # DE MIM, DELE, DELA, DE TODO MUNDO
 [![Build Status](https://github.com/casadodev/bot-twitch-python/workflows/Build/badge.svg)](https://github.com/casadodev/bot-twitch-python/actions?query=branch:master+workflow:Build)
 
+![Build](https://github.com/casadodev/bot-twitch-python/workflows/Build/badge.svg?branch=master)
+
 Nosso bot sempre foi open source.
 
 Usem, ajudem a desenvolver novas "fiat res"
