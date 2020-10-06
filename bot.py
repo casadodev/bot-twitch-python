@@ -27,6 +27,7 @@ bot = commands.Bot(
 # globais
 counters = {}
 
+
 @bot.event
 async def event_ready():
     'Chama quando o bot está online.'
