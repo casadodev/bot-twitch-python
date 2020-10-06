@@ -157,6 +157,7 @@ def create_counter(*, name, prefix, singular='vez', plural='vezes', start_value=
 
 create_counter(name='cachorro', prefix='O cachorro já latiu')
 create_counter(name='risada', prefix='A Mirele já riu')
+create_counter(name='taxado',prefix='O Casado já foi taxado')
 
 
 # TODO: comando solicitado pelo @Tairritadotio
