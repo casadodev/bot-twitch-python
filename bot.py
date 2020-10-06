@@ -4,7 +4,6 @@ import configparser
 import random
 import time
 
-
 import requests
 from requests_html import HTMLSession
 from twitchio.ext import commands
