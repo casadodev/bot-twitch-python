@@ -4,6 +4,7 @@ hoje é um grande dia para aprender flash.
 hoje está um lindo dia!
 qual foi a primeira linguagem de programação que você aprendeu?
 já fez um update sem where?
+Deseja ajudar na construção do bot ? totalmente open source , acesse "https://github.com/casadodev/bot-twitch-python"
 café é melhor que chocolate!
 testei em produção e deu pal
 o floquino mandou você beber agua agora!
