@@ -25,11 +25,5 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: install dependencies
-        run: |
-          pip install poetry
-          poetry install
-
       - name: run pre-commit
-        run: |
-          poetry run pre-commit run --all-files --show-diff-on-failure
+        uses: pre-commit/action@v2.0.0
