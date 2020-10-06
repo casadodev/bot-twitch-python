@@ -1,4 +1,4 @@
-# DE MIM, DELE, DELA, DE TODO MUNDO
+<h2 align="center"> DE MIM, DELE, DELA, DE TODO MUNDO</h2>
 
 <h3 align="center">
     <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/0940a2f0-2f2c-49d3-a87a-a3f4b3021b03-profile_image-300x300.png" alt="Icon casa do dev">
@@ -30,7 +30,7 @@ Usem, ajudem a desenvolver novas "features"
 Mandem Issues, PRs, salves nas lives.
 
 - [Issues](https://github.com/casadodev/bot-twitch-python/issues) :question:
-- [Live Twitch](https://www.twitch.tv/casadodev)
+- [Live Twitch](https://www.twitch.tv/casadodev) :tv:
 <!-- https://www.twitch.tv/casadodev -->
 
 > Chat bot desenvolvido em python durante as lives, com todos os comandos sugeridos pela galera show, e portado 100% para open source!
