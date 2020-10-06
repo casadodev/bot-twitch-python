@@ -1,7 +1,6 @@
 # bot.py
 import asyncio
 import configparser
-import functools
 import random
 import time
 
