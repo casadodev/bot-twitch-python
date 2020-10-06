@@ -79,7 +79,13 @@ async def event_command_error(ctx, error):
 @bot.command(name='steam')
 async def fn_steam(ctx):
     link = 'https://s.team/p/gdmd-fkhb/fmdrjvgt'
-    await ctx.send_me(f'/me Jogue conosco usando o código "1115830096" ou usando o link {link}')
+    await ctx.send_me(f'Jogue conosco usando o código "1115830096" ou usando o link {link}')
+
+
+@bot.command(name='bot')
+async def fn_bot(ctx):
+    link = 'https://github.com/casadodev/bot-twitch-python'
+    await ctx.send_me(f'Deseja ajudar na construção do bot, acesse o link e torne-se um contribuidor{link}')
 
 
 @bot.command(name='wp')
