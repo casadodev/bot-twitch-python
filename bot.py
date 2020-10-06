@@ -160,7 +160,7 @@ async def fn_cachorro(ctx, latidos):
     await ctx.send(f'/me O cachorro já latiu {latidos} vez(es)')
 
 
-@counter(name='risadas')
+@counter(name='risada')
 async def fn_risada(ctx, risadas):
     await ctx.send(f'/me A Mirele já riu {risadas} vez(es)')
 
