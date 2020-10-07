@@ -168,18 +168,24 @@ async def fn_dica(ctx):
 # comando para dicas de filmes
 @bot.command(name='filme')
 async def fn_filme(ctx):
-
     filme_indicado = 'Qualquer um do Nicolas Cage'
-
     print(f'Filme indicado: {filme_indicado}')
-
     await ctx.send(f'/me Nosso bot te indica o filme: {filme_indicado}')
 
 
+# TODO: biscoito / robson - por @ChicoCodes
+@bot.command(name='robson')
+async def fn_robson(ctx):
+    await ctx.send(f'/me @{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!')
+
+
+# TODO: biscoito / robson - por @ChicoCodes
+@bot.command(name='biscoito')
+async def fn_biscoito(ctx):
+    await ctx.send(f'/me @{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!')
+
+
 # TODO: traduzir texto por - PO: @ChicoCodes, com grande ajuda do MechanicallyDev
-'ENTREGA DO MPV 1 PARA O CHICOCODES'
-
-
 @bot.command(name='traduzir')
 async def fn_traduzir(ctx):
     'Traduz o texto para inglês'
@@ -197,23 +203,7 @@ async def fn_traduzir(ctx):
     await ctx.send(f'/me translate: {texto_traduzido}')
 
 
-# TODO: vai levar timeout de 30 segundos na próxima
-# TODO: biscoito / robson - por @ChicoCodes
-@bot.command(name='robson')
-async def fn_robson(ctx):
-    await ctx.send(f'/me @{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!')
-
-
-# TODO: biscoito / robson - por @ChicoCodes
-@bot.command(name='biscoito')
-async def fn_biscoito(ctx):
-    await ctx.send(f'/me @{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!')
-
-
 # TODO: traduzir texto por - PO: @ChicoCodes, com grande ajuda do MechanicallyDev
-'ENTREGA DO MPV 1 PARA O CHICOCODES'
-
-
 @bot.command(name='translate')
 async def fn_translate(ctx):
     'Traduz o texto para portugues'
