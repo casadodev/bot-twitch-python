@@ -77,7 +77,7 @@ async def fn_steam(ctx):
 @bot.command(name='bot')
 async def fn_bot(ctx):
     link = 'https://github.com/casadodev/bot-twitch-python'
-    await ctx.send_me(f'Deseja ajudar na construção do bot!? acesse o link e torne-se um contribuidor{link}')
+    await ctx.send_me(f'Deseja ajudar na construção do bot!? acesse o link e torne-se um contribuidor {link}')
 
 
 @bot.command(name='botwp')
@@ -362,6 +362,16 @@ async def fn_ban(ctx):
         )
 
         await ctx.send(f"{alvo} {tipo_ban}")
+
+
+@bot.command(name='humildao')
+async def fn_humildao(ctx):
+    if len(ctx.content.split(' ')[1]) < 4:
+        await ctx.send("Me diga quem é o Humildão, marca ele ai ResidentSleeper ")
+
+    if len(ctx.content.split(' ')[1]) > 3:
+        _, _, alvo = ctx.content.lower().partition(' ')
+        await ctx.send(f"{alvo} FOI HUMILDÃOOOOO PogChamp PogChamp PogChamp ")
 
 
 @bot.command(name='addban')
