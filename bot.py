@@ -100,6 +100,15 @@ async def fn_evento(ctx):
     await ctx.send_me('Dia 23/10 as 17:00h, venha participar do HacktoberFest do CasadoDev')
 
 
+@bot.command(name='horasorteio')
+async def fn_horasorteio(ctx):
+    await ctx.send_me(
+        'HORA DO SORTEIO!!!!!!'
+        'VENHA PARTICIPAR'
+        'QUEM SERÁ O SORTUDO DA NOITE Kappa'
+        )
+
+
 @bot.command(name='sorteio')
 async def fn_sorteio(ctx):
     await ctx.send_me(
