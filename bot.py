@@ -136,6 +136,12 @@ async def fn_adicionaMusica(ctx):
 # frases para enviar https://www.pensador.com/frases_para_correio_elegante/
 
 
+# TODO: comando solicitado pelo @ccesar88
+# coloca javaxpython pra vc comentar o que é melhor ou pior das linguagens, não sei , o que acha?
+@bot.command(name='javaxpython')
+async def fn_comparaJavaPython(ctx):
+    await ctx.send('/me comparando java x python - desenvolvendo')
+
 
 def create_counter(*, name, prefix, singular='vez', plural='vezes', start_value=0):
     counters[name] = start_value
@@ -151,7 +157,6 @@ def create_counter(*, name, prefix, singular='vez', plural='vezes', start_value=
 create_counter(name='cachorro', prefix='O cachorro já latiu')
 create_counter(name='risada', prefix='A Mirele já riu')
 create_counter(name='taxado', prefix='O Casado já foi taxado')
-create_counter(name='breja', prefix='O Casado já bebeu')
 
 
 # TODO: comando solicitado pelo @Tairritadotio
@@ -335,7 +340,7 @@ async def fn_add_mensagem_engajamento(ctx):
 # foi uma ótima idéia do @Falvern_
 @bot.command(name='unban')
 async def fn_unBan(ctx):
-    # TODO: implementar o método anti-ban durante a Hacktoberfest
+    # TODO: implementar o método anti-ban
     frase = 'invoca carta imbanivel e não pode ser banido!'
     await ctx.send(f"@{ctx.author.name} {frase}")
 
@@ -407,38 +412,45 @@ async def event_message(ctx):
 
     await bot.handle_commands(ctx)
 
+    # await ctx.channel.send(ctx.content)
+
     if 'bom dia' in ctx.content.lower():
-        await ctx.channel.send_me(f"Bom dia, @{ctx.author.name}! Como você está?")
+        await ctx.channel.send(f"Bom dia, @{ctx.author.name}! Como você está?")
 
     if 'boa tarde' in ctx.content.lower():
-        await ctx.channel.send_me(f"Boa tarde, @{ctx.author.name}! Como você está?")
+        await ctx.channel.send(f"Boa tarde, @{ctx.author.name}! Como você está?")
 
     if 'boa noite' in ctx.content.lower():
-        await ctx.channel.send_me(f"Boa noite, @{ctx.author.name}! Como você está?")
+        await ctx.channel.send(f"Boa noite, @{ctx.author.name}! Como você está?")
 
     if 'boa madrugada' in ctx.content.lower():
-        await ctx.channel.send_me(f"Boa madrugada aeew, @{ctx.author.name}! Como você está?")
+        await ctx.channel.send(f"Boa madrugada aeew, @{ctx.author.name}! Como você está?")
 
     # culpa do @Super_Feliz - o tecladod ele o trolou
     if 'boa note' in ctx.content.lower():
-        await ctx.channel.send_me(f"Boa noite, @{ctx.author.name}! Como você está? Seu teclado te trolou...")
+        await ctx.channel.send(f"Boa noite, @{ctx.author.name}! Como você está? Seu teclado te trolou...")
 
     if 'salve' in ctx.content.lower():
         await ctx.channel.send(f"Ta salvado, @{ctx.author.name}! Como você está?")
 
     if 'ctrl + s' in ctx.content.lower():
-        await ctx.channel.send_me(f"Ta salvado, @{ctx.author.name}! Como você está?")
+        await ctx.channel.send(f"Ta salvado, @{ctx.author.name}! Como você está?")
 
     if 'aoba' in ctx.content.lower():
-        await ctx.channel.send_me(f"Aoooba, @{ctx.author.name}! Como você está?")
+        await ctx.channel.send(f"Aoooba, @{ctx.author.name}! Como você está?")
 
     if 'lurk' in ctx.content.lower():
-        await ctx.channel.send_me(f"Opa @{ctx.author.name}! Tamo junto ae no lurk. Já ajuda pakas.")
+        await ctx.channel.send(f"Opa @{ctx.author.name}! Tamo junto ae no lurk. Já ajuda pakas.")
 
     if 'bolacha' in ctx.content.lower():
-        await ctx.channel.send_me(
-            f'@{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!',
+        await ctx.channel.send(
+            f'/me @{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!',
         )
+
+
+@bot.command(name='test')
+async def test(ctx):
+    await ctx.send('teste passou. xD')
 
 
 if __name__ == "__main__":
