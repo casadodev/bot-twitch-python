@@ -102,11 +102,9 @@ async def fn_evento(ctx):
 
 @bot.command(name='horasorteio')
 async def fn_horasorteio(ctx):
-    await ctx.send_me(
-        'HORA DO SORTEIO!!!!!!'
-        'VENHA PARTICIPAR'
-        'QUEM SERÁ O SORTUDO DA NOITE Kappa'
-        )
+    await ctx.send_me('HORA DO SORTEIO!!!!!!')
+    await ctx.send_me('VENHA PARTICIPAR')
+    await ctx.send_me('QUEM SERÁ O SORTUDO DA NOITE Kappa')
 
 
 @bot.command(name='sorteio')
