@@ -136,7 +136,6 @@ async def fn_adicionaMusica(ctx):
 # frases para enviar https://www.pensador.com/frases_para_correio_elegante/
 
 
-
 def create_counter(*, name, prefix, singular='vez', plural='vezes', start_value=0):
     counters[name] = start_value
 
