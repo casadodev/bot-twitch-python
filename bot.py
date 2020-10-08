@@ -97,7 +97,7 @@ async def fn_instagram(ctx):
 
 @bot.command(name='evento')
 async def fn_evento(ctx):
-    await ctx.send_me('Dia 23/10 as 17:00h, venha participar do HacktoberFest do CasadoDev')
+    await ctx.send_me('Dia 23/10 as 17:00h, venha participar do HacktoberFest do CasadoDev - https://casado.dev')
 
 
 @bot.command(name='horasorteio')
