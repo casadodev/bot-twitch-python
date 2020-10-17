@@ -5,6 +5,7 @@ import random
 import time
 import json
 
+
 import requests
 from requests_html import HTMLSession
 from twitchio.ext import commands
@@ -34,10 +35,10 @@ count_pessoa = []
 @bot.event
 async def event_ready():
     'Chama quando o bot está online.'
-    print(f"@{nick_bot} está online")
+    print(f"@{nick_bot} está online! ")
     ws = bot._ws  # só é chamado no evento inicial
 
-    await ws.send_privmsg(inicia_canal, 'Eu sou o verdadeiro')
+    await ws.send_privmsg(inicia_canal, ' Eu sou o verdadeiro')
     
     while True:
         'Mostrando os comandos disponíveis no bot'
@@ -144,7 +145,7 @@ async def fn_adicionaMusica(ctx):
 # frases para enviar https://www.pensador.com/frases_para_correio_elegante/
 
 
-def create_counter(*, name, prefix, singular='vez', plural='vezes',start_value=0):
+def create_counter(*, name, prefix, singular='vez', plural='vezes', start_value=0):
     counters[name] = start_value
     
     @bot.command(name=name)
@@ -156,7 +157,7 @@ def create_counter(*, name, prefix, singular='vez', plural='vezes',start_value=0
         
         suffix = plural if current > 1 else singular
         await ctx.send(f'/me {prefix} {current} {suffix}')
-
+        
         with open('files/counters.json', "w") as file_write:
             json.dump(jsonData, file_write)
 
@@ -463,6 +464,7 @@ async def event_message(ctx):
         await ctx.channel.send_me(
             f'@{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!',
         )
+
     if 'biscoito' in ctx.content.lower():
         await ctx.channel.send_me(
             f'@{ctx.author.name} Errado o correto é bolacha , BO-LA-CHA, patoGordin disse ',
