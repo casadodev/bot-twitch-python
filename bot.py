@@ -13,7 +13,7 @@ from twitchio.ext import commands
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-nick_bot = 'patogordinbot'
+nick_bot = 'casadodevbot'
 inicia_canal = 'casadodev'
 
 
