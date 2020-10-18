@@ -13,7 +13,7 @@ from twitchio.ext import commands
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-nick_bot = 'casadodevbot'
+nick_bot = 'patogordinbot'
 inicia_canal = 'casadodev'
 
 
@@ -167,6 +167,7 @@ create_counter(name='cachorro', prefix='O cachorro já latiu')
 create_counter(name='risada', prefix='A Mirele já riu')
 create_counter(name='taxado', prefix='O Casado já foi taxado')
 create_counter(name='breja', prefix='O Casado já bebeu')
+create_counter(name='chat',prefix='O Casado não leu o chat')
 
 
 # TODO: comando solicitado pelo @Tairritadotio
@@ -174,6 +175,10 @@ create_counter(name='breja', prefix='O Casado já bebeu')
 async def fn_dica(ctx):
     await ctx.send('/me Se der erro no seu código poder ser que algo esteja errado ou algo não esteja certo.')
 
+
+@bot.command(name='raid')
+async def fn_raid(ctx):
+    await ctx.send('/me Kappa PogChamp PogChamp Kappa PogChamp  Kappa PogChamp PogChamp Kappa PogChamp Kappa PogChamp PogChamp Kappa PogChamp ')
 
 # comando para dicas de filmes
 @bot.command(name='filme')
@@ -469,6 +474,10 @@ async def event_message(ctx):
         await ctx.channel.send_me(
             f'@{ctx.author.name} Errado o correto é bolacha , BO-LA-CHA, patoGordin disse ',
         )
+    
+    if 'sextou' in ctx.content.lower():
+        await ctx.channel.send_me(f"SEXTOUUUUUUU DIA DE FAZER PUSH NA MASTER")
+
 
 if __name__ == "__main__":
     bot.run()
