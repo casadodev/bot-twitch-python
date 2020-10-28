@@ -38,3 +38,16 @@ Mandem Issues, PRs, salves nas lives.
 #### Ahh! Galera, atualizem aqui o Readme com os canais de vocês :) e continuem contruibuindo
 
 ----
+
+
+
+#### ME SIGA NAS REDES
+* [twitter.com/casadodev](https://twitter.com/casadodev)
+* [instagram.com/casadodev](https://instagram.com/casadodev)
+* [facebook.com/casadodev](https://facebook.com/casadodev)
+* [github.com/cirino](https://github.com/cirino)
+* [github.com/casadodev](https://github.com/casadodev)
+
+*Tenho alguns pequenos projetos web*
+* [mercadodeti.com.br](https://mercadodeti.com.br)
+* [casado.dev](https://casado.dev)
