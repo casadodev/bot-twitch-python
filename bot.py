@@ -176,7 +176,7 @@ async def fn_dica(ctx):
 
 @bot.command(name='raid')
 async def fn_raid(ctx):
-    await ctx.send_me('''Kappa PogChamp PogChamp Kappa PogChamp  Kappa PogChamp 
+    await ctx.send_me('''Kappa PogChamp PogChamp Kappa PogChamp  Kappa PogChamp
         PogChamp Kappa PogChamp Kappa PogChamp PogChamp Kappa PogChamp''')
 
 
