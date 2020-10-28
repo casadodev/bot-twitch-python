@@ -11,6 +11,7 @@ config.ini
 README.md
 /.vscode
 /lib
+/.idea
 
 # User-specific files
 *.rsuser
