@@ -1,10 +1,9 @@
 # bot.py
 import asyncio
 import configparser
+import json
 import random
 import time
-import json
-
 
 import requests
 from requests_html import HTMLSession
