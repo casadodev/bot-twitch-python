@@ -155,7 +155,7 @@ def create_counter(*, name, prefix, singular='vez', plural='vezes', start_value=
             current = jsonData[name]
 
         suffix = plural if current > 1 else singular
-        await ctx.send(f'/me {prefix} {current} {suffix}')
+        await ctx.send_me(f'{prefix} {current} {suffix}')
 
         with open('files/counters.json', "w") as file_write:
             json.dump(jsonData, file_write)
@@ -171,33 +171,33 @@ create_counter(name='chat', prefix='O Casado não leu o chat')
 # TODO: comando solicitado pelo @Tairritadotio
 @bot.command(name='dica')
 async def fn_dica(ctx):
-    await ctx.send('/me Se der erro no seu código poder ser que algo esteja errado ou algo não esteja certo.')
+    await ctx.send_me('Se der erro no seu código poder ser que algo esteja errado ou algo não esteja certo.')
 
 
 @bot.command(name='raid')
 async def fn_raid(ctx):
-    await ctx.send('/me Kappa PogChamp PogChamp Kappa PogChamp  Kappa PogChamp PogChamp Kappa PogChamp Kappa PogChamp PogChamp Kappa PogChamp ')
+    await ctx.send_me('''Kappa PogChamp PogChamp Kappa PogChamp  Kappa PogChamp
+        PogChamp Kappa PogChamp Kappa PogChamp PogChamp Kappa PogChamp''')
+
 
 # comando para dicas de filmes
-
-
 @bot.command(name='filme')
 async def fn_filme(ctx):
     filme_indicado = 'Qualquer um do Nicolas Cage'
     print(f'Filme indicado: {filme_indicado}')
-    await ctx.send(f'/me Nosso bot te indica o filme: {filme_indicado}')
+    await ctx.send_me(f'Nosso bot te indica o filme: {filme_indicado}')
 
 
 # TODO: biscoito / robson - por @ChicoCodes
 @bot.command(name='robson')
 async def fn_robson(ctx):
-    await ctx.send(f'/me @{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!')
+    await ctx.send_me(f'@{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!')
 
 
 # TODO: biscoito / robson - por @ChicoCodes
 @bot.command(name='biscoito')
 async def fn_biscoito(ctx):
-    await ctx.send(f'/me @{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!')
+    await ctx.send_me(f'@{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!')
 
 
 # TODO: traduzir texto por - PO: @ChicoCodes, com grande ajuda do MechanicallyDev
@@ -215,7 +215,7 @@ async def fn_traduzir(ctx):
     texto_traduzido = req_selecionada.html.find('#tw-target-text')[0].text
     print(f'Tradução: {texto_traduzido}')
 
-    await ctx.send(f'/me translate: {texto_traduzido}')
+    await ctx.send_me(f'translate: {texto_traduzido}')
 
 
 # TODO: traduzir texto por - PO: @ChicoCodes, com grande ajuda do MechanicallyDev
@@ -233,7 +233,7 @@ async def fn_translate(ctx):
     texto_traduzido = req_selecionada.html.find('#tw-target-text')[0].text
     print(f'Tradução: {texto_traduzido}')
 
-    await ctx.send(f'/me translate: {texto_traduzido}')
+    await ctx.send_me(f'translate: {texto_traduzido}')
 
 
 # TODO: mostrar horóscopo
@@ -248,7 +248,7 @@ async def fn_horoscopo(ctx):
     req_selecionada = session.get(f'{url_signos}{signo_solicitado}/')
     signo_selecionado = req_selecionada.html.find('.previsao_dia')[0].text
 
-    await ctx.send(f'/me {signo_solicitado}: {signo_selecionado}')
+    await ctx.send_me(f'{signo_solicitado}: {signo_selecionado}')
 
 
 # TODO: Tratar localization
@@ -309,10 +309,10 @@ async def fn_piadas(ctx):
     pergunta = piada_selecionada['question']
     resposta = piada_selecionada['answer']
 
-    await ctx.send(f'/me Pergunta: {pergunta}')
+    await ctx.send_me(f'Pergunta: {pergunta}')
 
     time.sleep(15)
-    await ctx.send(f'/me Resposta: {resposta}')
+    await ctx.send_me(f'Resposta: {resposta}')
 
 
 @bot.command(name='motivar')
@@ -330,7 +330,7 @@ async def fn_motivacao(ctx):
 
     print(f"Frase de {autor}: {frase}")
 
-    await ctx.send(f'/me "{frase}", por {autor}')
+    await ctx.send_me(f'"{frase}", por {autor}')
 
 
 @bot.command(name='addengajar')
@@ -346,10 +346,10 @@ async def fn_add_mensagem_engajamento(ctx):
         arquivo_texto_engajamento.close()
 
         print(f"texto de engajamento adicionado por @{ctx.author.name}")
-        await ctx.send('Mensagem de engajamento adicionada. aguardando aprovação.')
+        await ctx.send_me('Mensagem de engajamento adicionada. aguardando aprovação.')
 
     if len(ctx.content) < 30:
-        await ctx.send('Mensagem precisa ter pelo menos 30 caracteres.')
+        await ctx.send_me('Mensagem precisa ter pelo menos 30 caracteres.')
 
 
 # foi uma ótima idéia do @Falvern_
@@ -357,13 +357,13 @@ async def fn_add_mensagem_engajamento(ctx):
 async def fn_unBan(ctx):
     # TODO: implementar o método anti-ban durante a Hacktoberfest
     frase = 'invoca carta imbanivel e não pode ser banido!'
-    await ctx.send(f"@{ctx.author.name} {frase}")
+    await ctx.send_me(f"@{ctx.author.name} {frase}")
 
 
 @bot.command(name='ban')
 async def fn_ban(ctx):
     if len(ctx.content.split(' ')[1]) < 4:
-        await ctx.send("para banir alguém, é preciso incluir o nome o usuário")
+        await ctx.send_me("para banir alguém, é preciso incluir o nome o usuário")
 
     if len(ctx.content.split(' ')[1]) > 3:
         lista_ban = open('files/texto_bans.txt', encoding='utf-8')
@@ -375,17 +375,17 @@ async def fn_ban(ctx):
             f"comando de banir executado por @{ctx.author.name} para o @{alvo}",
         )
 
-        await ctx.send(f"{alvo} {tipo_ban}")
+        await ctx.send_me(f"{alvo} {tipo_ban}")
 
 
 @bot.command(name='humildao')
 async def fn_humildao(ctx):
     if len(ctx.content.split(' ')[1]) < 4:
-        await ctx.send("Me diga quem é o Humildão, marca ele ai ResidentSleeper ")
+        await ctx.send_me("Me diga quem é o Humildão, marca ele ai ResidentSleeper ")
 
     if len(ctx.content.split(' ')[1]) > 3:
         _, _, alvo = ctx.content.lower().partition(' ')
-        await ctx.send(f"{alvo} FOI HUMILDÃOOOOO PogChamp PogChamp PogChamp ")
+        await ctx.send_me(f"{alvo} FOI HUMILDÃOOOOO PogChamp PogChamp PogChamp ")
 
 
 @bot.command(name='addban')
@@ -402,7 +402,7 @@ async def fn_addban(ctx):
         arquivo_texto_bans.close()
 
         print(f"texto de ban adicionado por @{ctx.author.name}")
-        await ctx.send('Mensagem de ban adicionada. aguardando aprovação.')
+        await ctx.send_me('Mensagem de ban adicionada. aguardando aprovação.')
 
 
 # @bot.command(name='atividade')
@@ -472,11 +472,11 @@ async def event_message(ctx):
 
     if 'biscoito' in ctx.content.lower():
         await ctx.channel.send_me(
-            f'@{ctx.author.name} Errado o correto é bolacha , BO-LA-CHA, patoGordin disse ',
+            f'@{ctx.author.name} Errado o correto é bolacha, BO-LA-CHA, patoGordin disse ',
         )
 
     if 'sextou' in ctx.content.lower():
-        await ctx.channel.send_me(f"SEXTOUUUUUUU DIA DE FAZER PUSH NA MASTER")
+        await ctx.channel.send_me('SEXTOUUUUUUU DIA DE FAZER PUSH NA MASTER!!!')
 
 
 if __name__ == "__main__":
