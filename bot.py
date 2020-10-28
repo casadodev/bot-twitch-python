@@ -1,9 +1,10 @@
 # bot.py
 import asyncio
 import configparser
-import json
 import random
 import time
+import json
+
 
 import requests
 from requests_html import HTMLSession
@@ -38,7 +39,7 @@ async def event_ready():
     ws = bot._ws  # só é chamado no evento inicial
 
     await ws.send_privmsg(inicia_canal, ' Eu sou o verdadeiro')
-
+    
     while True:
         'Mostrando os comandos disponíveis no bot'
 
@@ -146,26 +147,27 @@ async def fn_adicionaMusica(ctx):
 
 def create_counter(*, name, prefix, singular='vez', plural='vezes', start_value=0):
     counters[name] = start_value
-
+    
     @bot.command(name=name)
     async def _counter(ctx):
         with open('files/counters.json') as counts:
             jsonData = json.load(counts)
             jsonData[name] = jsonData[name] + 1
             current = jsonData[name]
-
+        
         suffix = plural if current > 1 else singular
         await ctx.send(f'/me {prefix} {current} {suffix}')
-
+        
         with open('files/counters.json', "w") as file_write:
             json.dump(jsonData, file_write)
+
 
 
 create_counter(name='cachorro', prefix='O cachorro já latiu')
 create_counter(name='risada', prefix='A Mirele já riu')
 create_counter(name='taxado', prefix='O Casado já foi taxado')
 create_counter(name='breja', prefix='O Casado já bebeu')
-create_counter(name='chat', prefix='O Casado não leu o chat')
+create_counter(name='chat',prefix='O Casado não leu o chat')
 
 
 # TODO: comando solicitado pelo @Tairritadotio
@@ -179,8 +181,6 @@ async def fn_raid(ctx):
     await ctx.send('/me Kappa PogChamp PogChamp Kappa PogChamp  Kappa PogChamp PogChamp Kappa PogChamp Kappa PogChamp PogChamp Kappa PogChamp ')
 
 # comando para dicas de filmes
-
-
 @bot.command(name='filme')
 async def fn_filme(ctx):
     filme_indicado = 'Qualquer um do Nicolas Cage'
@@ -474,7 +474,7 @@ async def event_message(ctx):
         await ctx.channel.send_me(
             f'@{ctx.author.name} Errado o correto é bolacha , BO-LA-CHA, patoGordin disse ',
         )
-
+    
     if 'sextou' in ctx.content.lower():
         await ctx.channel.send_me(f"SEXTOUUUUUUU DIA DE FAZER PUSH NA MASTER")
 
