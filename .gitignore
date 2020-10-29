@@ -5,7 +5,9 @@
 
 twitch_tut.py
 config.ini
+files/counters.json
 
+*.json
 .env
 *.ini
 README.md
