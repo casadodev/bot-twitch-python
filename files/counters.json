@@ -1,1 +1,22 @@
-{"cachorro": 7, "risada": 64, "taxado": 28, "breja": 4, "chat": 13}
+{
+    "cachorro": {
+        "qtd": 0,
+        "dates": []
+    },
+    "risada": {
+        "qtd": 0,
+        "dates": []
+    },
+    "taxado": {
+        "qtd": 0,
+        "datas": []
+    },
+    "breja": {
+        "qtd": 0,
+        "dates": []
+    },
+    "chat": {
+        "qtd": 0,
+        "dates": []
+    }
+}
