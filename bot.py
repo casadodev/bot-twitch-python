@@ -74,7 +74,7 @@ async def event_command_error(ctx, error):
 async def fn_steam(ctx):
     link = "https://s.team/p/gdmd-fkhb/fmdrjvgt"
     await ctx.send_me(
-        f'Jogue conosco usando o código "1115830096" ou usando o link {link}'
+        f'Jogue conosco usando o código "1115830096" ou usando o link {link}',
     )
 
 
@@ -82,14 +82,14 @@ async def fn_steam(ctx):
 async def fn_bot(ctx):
     link = "https://github.com/casadodev/bot-twitch-python"
     await ctx.send_me(
-        f"Deseja ajudar na construção do bot!? acesse o link e torne-se um contribuidor {link}"
+        f"Deseja ajudar na construção do bot!? acesse o link e torne-se um contribuidor {link}",
     )
 
 
 @bot.command(name="botwp")
 async def fn_whatsapp(ctx):
     await ctx.send_me(
-        "Grupo no whatsapp https://chat.whatsapp.com/GjztcHTQiXb0MNZutOhCOY"
+        "Grupo no whatsapp https://chat.whatsapp.com/GjztcHTQiXb0MNZutOhCOY",
     )
 
 
@@ -106,7 +106,7 @@ async def fn_instagram(ctx):
 @bot.command(name="evento")
 async def fn_evento(ctx):
     await ctx.send_me(
-        "Dia 23/10 as 17:00h, venha participar do HacktoberFest do CasadoDev - https://casado.dev"
+        "Dia 23/10 as 17:00h, venha participar do HacktoberFest do CasadoDev - https://casado.dev",
     )
 
 
@@ -181,7 +181,7 @@ create_counter(name="chat", prefix="O Casado não leu o chat")
 @bot.command(name="dica")
 async def fn_dica(ctx):
     await ctx.send_me(
-        "Se der erro no seu código poder ser que algo esteja errado ou algo não esteja certo."
+        "Se der erro no seu código poder ser que algo esteja errado ou algo não esteja certo.",
     )
 
 
@@ -189,7 +189,7 @@ async def fn_dica(ctx):
 async def fn_raid(ctx):
     await ctx.send_me(
         """Kappa PogChamp PogChamp Kappa PogChamp  Kappa PogChamp
-        PogChamp Kappa PogChamp Kappa PogChamp PogChamp Kappa PogChamp"""
+        PogChamp Kappa PogChamp Kappa PogChamp PogChamp Kappa PogChamp""",
     )
 
 
@@ -205,7 +205,7 @@ async def fn_filme(ctx):
 @bot.command(name="robson")
 async def fn_robson(ctx):
     await ctx.send_me(
-        f"@{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!"
+        f"@{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!",
     )
 
 
@@ -213,7 +213,7 @@ async def fn_robson(ctx):
 @bot.command(name="biscoito")
 async def fn_biscoito(ctx):
     await ctx.send_me(
-        f"@{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!"
+        f"@{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!",
     )
 
 
@@ -338,7 +338,7 @@ async def fn_motivacao(ctx):
     session = HTMLSession()
     req_selecionada = session.get("https://motivaai.nandomoreira.dev/")
 
-    motivacao_selecionada = req_selecionada.html.find("blockquote",)[
+    motivacao_selecionada = req_selecionada.html.find("blockquote")[
         0
     ].text.split("\n")
 
@@ -469,13 +469,13 @@ async def event_message(ctx):
 
     if "boa madrugada" in ctx.content.lower():
         await ctx.channel.send_me(
-            f"Boa madrugada aeew, @{ctx.author.name}! Como você está?"
+            f"Boa madrugada aeew, @{ctx.author.name}! Como você está?",
         )
 
     # culpa do @Super_Feliz - o tecladod ele o trolou
     if "boa note" in ctx.content.lower():
         await ctx.channel.send_me(
-            f"Boa noite, @{ctx.author.name}! Como você está? Seu teclado te trolou..."
+            f"Boa noite, @{ctx.author.name}! Como você está? Seu teclado te trolou...",
         )
 
     if "salve" in ctx.content.lower():
@@ -489,7 +489,7 @@ async def event_message(ctx):
 
     if "lurk" in ctx.content.lower():
         await ctx.channel.send_me(
-            f"Opa @{ctx.author.name}! Tamo junto ae no lurk. Já ajuda pakas."
+            f"Opa @{ctx.author.name}! Tamo junto ae no lurk. Já ajuda pakas.",
         )
 
     if "bolacha" in ctx.content.lower():
