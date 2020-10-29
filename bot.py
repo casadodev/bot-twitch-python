@@ -4,6 +4,7 @@ import configparser
 import json
 import random
 import time
+from datetime import datetime
 
 import requests
 from requests_html import HTMLSession
@@ -153,8 +154,6 @@ async def fn_adicionaMusica(ctx):
 
 
 def create_counter(*, name, prefix, singular="vez", plural="vezes"):
-    counters[name] = start_value
-
     @bot.command(name=name)
     async def _counter(ctx):
         date = datetime.now()
