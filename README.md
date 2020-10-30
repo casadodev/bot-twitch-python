@@ -37,7 +37,7 @@ Mandem Issues, PRs, salves nas lives.
 
 ### Configurações inicias.
 
-Edite o arquivo [`config.ini`](https://github.com/casadodev/bot-twitch-python/blob/master/config.ini) na raiz do projeto conforme os comentários de instruções presentes no próprio arquivo.
+Renomeie o arquivo [`config.example.ini`](https://github.com/casadodev/bot-twitch-python/blob/master/config.example.ini) na raiz do projeto para `config.ini` e edite-o conforme os comentários de instruções presentes no próprio arquivo.
 
 **Instalar dependências do projeto.**
 
