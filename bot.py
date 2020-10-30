@@ -13,16 +13,13 @@ from twitchio.ext import commands
 config = configparser.ConfigParser()
 config.read("config.ini")
 
-nick_bot = "casadodevbot"
-inicia_canal = "casadodev"
-
+nick_bot = config.get("bot", "username")
+inicia_canal = config.get("bot", "channel")
 
 bot = commands.Bot(
-    # set up the bot
-    irc_token=config["bot"]["token"],
-    client_id=config["bot"]["client_id"],
+    irc_token=config.get("bot", "oauth_token"),
     nick=nick_bot,
-    prefix="!",
+    prefix=config.get("bot", "command_prefix"),
     initial_channels=[inicia_canal],
 )
 

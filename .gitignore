@@ -4,10 +4,8 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 twitch_tut.py
-config.ini
 
 .env
-*.ini
 README.md
 /.vscode
 /lib
