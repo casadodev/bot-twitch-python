@@ -5,15 +5,36 @@ import json
 import random
 import time
 from datetime import datetime
+import os
+import os.path
+from pathlib import Path
 
 import requests
 from requests_html import HTMLSession
 from twitchio.ext import commands
 
+# Criar a pasta caso não exista.
+if not os.path.exists('files'):
+    os.mkdir('files')
+    print('Pasta criada.')
+
+os.chdir('files') # Muda para a pasta files.
+Path("commands.json").touch() # Cria o arquivo caso não tenha ainda.
+
+# Acessar o arquivo e recuperar os comandos anteriormente criados.
+with open("commands.json", 'r', encoding='UTF-8') as file:
+    try:
+        namecommand = json.load(file)
+    except:
+        namecommand = {}
+    finally:
+        print(type(namecommand), namecommand)
+
+
 config = configparser.ConfigParser()
 config.read("config.ini")
 
-nick_bot = "casadodevbot"
+nick_bot = "vitthinbot"
 inicia_canal = "casadodev"
 
 
@@ -44,7 +65,7 @@ async def event_ready():
         "Mostrando os comandos disponíveis no bot"
 
         msg_aleatoria = list(
-            open("files/texto_engajamento.txt", encoding="utf-8"),
+            open("texto_engajamento.txt", encoding="utf-8"),
         )
         comandos = (
             '/me os comandos do bot são "exclamação + :" ban +usuário, '
@@ -157,7 +178,7 @@ def create_counter(*, name, prefix, singular="vez", plural="vezes"):
     @bot.command(name=name)
     async def _counter(ctx):
         date = datetime.now()
-        with open("files/counters.json") as current_json:
+        with open("counters.json") as current_json:
             raw_json = json.load(current_json)
             amount = raw_json[name]["qtd"] = raw_json[name]["qtd"] + 1
             current_list_dates = raw_json[name]["dates"]
@@ -166,7 +187,7 @@ def create_counter(*, name, prefix, singular="vez", plural="vezes"):
         suffix = plural if amount > 1 else singular
         await ctx.send_me(f"{prefix} {amount} {suffix}")
 
-        with open("files/counters.json", "w") as file_write:
+        with open("counters.json", "w") as file_write:
             json.dump(raw_json, file_write)
 
 
@@ -355,7 +376,7 @@ async def fn_add_mensagem_engajamento(ctx):
     if len(ctx.content) > 30:
         # gravar a mensagem de ban comprada pelo usuário
         arquivo_texto_engajamento = open(
-            "files/texto_engajamento.txt",
+            "texto_engajamento.txt",
             "a+",
             encoding="utf-8",
         )
@@ -385,7 +406,7 @@ async def fn_ban(ctx):
         await ctx.send_me("para banir alguém, é preciso incluir o nome o usuário")
 
     if len(ctx.content.split(" ")[1]) > 3:
-        lista_ban = open("files/texto_bans.txt", encoding="utf-8")
+        lista_ban = open("texto_bans.txt", encoding="utf-8")
 
         _, _, alvo = ctx.content.lower().partition(" ")
         tipo_ban = random.choice(list(lista_ban))
@@ -413,7 +434,7 @@ async def fn_addban(ctx):
         # gravar a mensagem de ban comprada pelo usuário
 
         arquivo_texto_bans = open(
-            "files/texto_moderacao_bans.txt",
+            "texto_moderacao_bans.txt",
             "a+",
             encoding="utf-8",
         )
@@ -426,10 +447,48 @@ async def fn_addban(ctx):
         await ctx.send_me("Mensagem de ban adicionada. aguardando aprovação.")
 
 
+# Para poder adicionar/editar/deletar comandos pelo chat (apenas gerados pelo !comando)
+@bot.command(name='comando')
+async def add_command(ctx):
+    if not ctx.author.is_mod:
+        return
+
+    global namecommand
+
+    def save_file(save=dict): # Salvar no arquivo as alterações
+        with open("commands.json", 'w+', encoding='utf-8') as file:
+            comandos = json.dumps(save, indent=True, ensure_ascii=False)
+            file.write(comandos)
+            print("comando salvo")
+
+    comando = ctx.content.split()[2]
+    msg = " ".join(ctx.content.split()[3:])
+    if ctx.content.split()[1] == 'add': # Adicionar o comando novo
+        namecommand[comando] = msg
+        print(f"Comando {comando} adicionado por {ctx.author.name}. Lista de comando adicionados {namecommand}")
+        save_file(namecommand)
+        mensagem = f"Comando '{comando}' com a mensagem '{msg}' foi adicionada com sucesso."
+
+    elif ctx.content.split()[1] == 'edit': # Editar um comando
+        for command, message in namecommand.items():
+            if command == comando:
+                namecommand[command] = msg
+                print(f"A mensagem do comando '{comando}' foi alterado para '{message}'")  
+                save_file(namecommand)
+                mensagem = f"A mensagem do comando '{comando}' foi alterado para '{msg}' com sucesso."
+
+    elif ctx.content.split()[1] == 'del': # Deletar um comando
+        namecommand.pop(comando)
+        save_file(namecommand)
+        mensagem = f"O comando '{comando}' foi deletado com sucesso."
+    
+    await ctx.channel.send(mensagem)
+
+
 # @bot.command(name='atividade')
 # async def fn_chat(ctx, nick='casadodevbot'):
 # 'QUANTIDADE DE MENSAGENS QUE A PESSOA ENVIOU NA LIVE'
-# msg_pessoas = open('files/quantidade_pessoas.txt', encoding='utf-8')
+# msg_pessoas = open('quantidade_pessoas.txt', encoding='utf-8')
 
 # sets = set(pessoas_online)
 
@@ -461,19 +520,19 @@ async def event_message(ctx):
     if "bom dia" in ctx.content.lower():
         await ctx.channel.send_me(f"Bom dia, @{ctx.author.name}! Como você está?")
 
-    if "boa tarde" in ctx.content.lower():
+    elif "boa tarde" in ctx.content.lower():
         await ctx.channel.send_me(f"Boa tarde, @{ctx.author.name}! Como você está?")
 
-    if "boa noite" in ctx.content.lower():
+    elif "boa noite" in ctx.content.lower():
         await ctx.channel.send_me(f"Boa noite, @{ctx.author.name}! Como você está?")
 
-    if "boa madrugada" in ctx.content.lower():
+    elif "boa madrugada" in ctx.content.lower():
         await ctx.channel.send_me(
             f"Boa madrugada aeew, @{ctx.author.name}! Como você está?",
         )
 
     # culpa do @Super_Feliz - o tecladod ele o trolou
-    if "boa note" in ctx.content.lower():
+    elif "boa note" in ctx.content.lower():
         await ctx.channel.send_me(
             f"Boa noite, @{ctx.author.name}! Como você está? Seu teclado te trolou...",
         )
@@ -504,6 +563,16 @@ async def event_message(ctx):
 
     if "sextou" in ctx.content.lower():
         await ctx.channel.send_me("SEXTOUUUUUUU DIA DE FAZER PUSH NA MASTER!!!")
+
+    # Para rodar os comandos criados pelo !comando
+    if "!" == ctx.content.split()[0][0]:
+        comando = ctx.content.split()[0]
+        for command, message in namecommand.items():
+            if comando.replace("!", "") == command:
+                name = command
+                msg = message
+                print(f"Comando chamado:'{name}' -> '{msg}'")
+                await ctx.channel.send(msg)
 
 
 if __name__ == "__main__":
