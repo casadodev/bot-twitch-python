@@ -2,11 +2,11 @@
 import asyncio
 import configparser
 import json
+import os
+import os.path
 import random
 import time
 from datetime import datetime
-import os
-import os.path
 from pathlib import Path
 
 import requests
@@ -18,8 +18,8 @@ if not os.path.exists('files'):
     os.mkdir('files')
     print('Pasta criada.')
 
-os.chdir('files') # Muda para a pasta files.
-Path("commands.json").touch() # Cria o arquivo caso não tenha ainda.
+os.chdir('files')  # Muda para a pasta files.
+Path("commands.json").touch()  # Cria o arquivo caso não tenha ainda.
 
 # Acessar o arquivo e recuperar os comandos anteriormente criados.
 with open("commands.json", 'r', encoding='UTF-8') as file:
@@ -34,7 +34,7 @@ with open("commands.json", 'r', encoding='UTF-8') as file:
 config = configparser.ConfigParser()
 config.read("config.ini")
 
-nick_bot = "vitthinbot"
+nick_bot = "casadodevbot"
 inicia_canal = "casadodev"
 
 
@@ -455,7 +455,7 @@ async def add_command(ctx):
 
     global namecommand
 
-    def save_file(save=dict): # Salvar no arquivo as alterações
+    def save_file(save=dict):  # Salvar no arquivo as alterações
         with open("commands.json", 'w+', encoding='utf-8') as file:
             comandos = json.dumps(save, indent=True, ensure_ascii=False)
             file.write(comandos)
@@ -463,25 +463,25 @@ async def add_command(ctx):
 
     comando = ctx.content.split()[2]
     msg = " ".join(ctx.content.split()[3:])
-    if ctx.content.split()[1] == 'add': # Adicionar o comando novo
+    if ctx.content.split()[1] == 'add':  # Adicionar o comando novo
         namecommand[comando] = msg
         print(f"Comando {comando} adicionado por {ctx.author.name}. Lista de comando adicionados {namecommand}")
         save_file(namecommand)
         mensagem = f"Comando '{comando}' com a mensagem '{msg}' foi adicionada com sucesso."
 
-    elif ctx.content.split()[1] == 'edit': # Editar um comando
+    elif ctx.content.split()[1] == 'edit':  # Editar um comando
         for command, message in namecommand.items():
             if command == comando:
                 namecommand[command] = msg
-                print(f"A mensagem do comando '{comando}' foi alterado para '{message}'")  
+                print(f"A mensagem do comando '{comando}' foi alterado para '{message}'")
                 save_file(namecommand)
                 mensagem = f"A mensagem do comando '{comando}' foi alterado para '{msg}' com sucesso."
 
-    elif ctx.content.split()[1] == 'del': # Deletar um comando
+    elif ctx.content.split()[1] == 'del':  # Deletar um comando
         namecommand.pop(comando)
         save_file(namecommand)
         mensagem = f"O comando '{comando}' foi deletado com sucesso."
-    
+
     await ctx.channel.send(mensagem)
 
 
