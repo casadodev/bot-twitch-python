@@ -34,7 +34,7 @@ with open("commands.json", 'r', encoding='UTF-8') as file:
 config = configparser.ConfigParser()
 config.read("config.ini")
 
-nick_bot = "vitthinbot"
+nick_bot = "casadodevbot"
 inicia_canal = "casadodev"
 
 
