@@ -34,20 +34,11 @@ Mandem Issues, PRs, salves nas lives.
 <!-- https://www.twitch.tv/casadodev -->
 
 > Chat bot desenvolvido em python durante as lives, com todos os comandos sugeridos pela galera show, e portado 100% para open source!
-##
+
 ### Configurações inicias.
 
-crie um `config.ini` na raiz do projeto
-Exemplo:
-```ini
-[DEFAULT]
+Renomeie o arquivo [`config.example.ini`](https://github.com/casadodev/bot-twitch-python/blob/master/config.example.ini) na raiz do projeto para `config.ini` e edite-o conforme os comentários de instruções presentes no próprio arquivo.
 
-
-[bot]
-token = oauth:sua_aouth_token
-client_id = sua_cliente_id
-
-```
 **Instalar dependências do projeto.**
 
 > caso não queira instalar as dependências globalmente utilize um ambiente virtual Exemplo virtualenv ou outro de sua preferencia.
