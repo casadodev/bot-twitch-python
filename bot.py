@@ -38,7 +38,7 @@ async def event_ready():
     print(f"@{nick_bot} está online! ")
     ws = bot._ws  # só é chamado no evento inicial
 
-    await ws.send_privmsg(inicia_canal, " Eu sou o verdadeiro")
+    await ws.send_privmsg(inicia_canal, f"@{nick_bot} está online!")
 
     while True:
         "Mostrando os comandos disponíveis no bot"
@@ -161,7 +161,7 @@ def create_counter(*, name, prefix, singular="vez", plural="vezes"):
             raw_json = json.load(current_json)
             amount = raw_json[name]["qtd"] = raw_json[name]["qtd"] + 1
             current_list_dates = raw_json[name]["dates"]
-            current_list_dates.append(date.strftime("%d/%m/%Y"))
+            current_list_dates.append(date.strftime("%d/%m/%Y %H:%M:%S"))
 
         suffix = plural if amount > 1 else singular
         await ctx.send_me(f"{prefix} {amount} {suffix}")
