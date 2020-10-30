@@ -7,11 +7,11 @@ twitch_tut.py
 config.ini
 
 .env
-*.ini
 README.md
 /.vscode
 /lib
 /.idea
+/.venv
 
 # User-specific files
 *.rsuser
