@@ -12,6 +12,7 @@ README.md
 /.vscode
 /lib
 /.idea
+/.venv
 
 # User-specific files
 *.rsuser
