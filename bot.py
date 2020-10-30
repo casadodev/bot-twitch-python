@@ -25,7 +25,7 @@ Path("commands.json").touch() # Cria o arquivo caso não tenha ainda.
 with open("commands.json", 'r', encoding='UTF-8') as file:
     try:
         namecommand = json.load(file)
-    except:
+    except ValueError:
         namecommand = {}
     finally:
         print(type(namecommand), namecommand)
