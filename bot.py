@@ -172,7 +172,7 @@ create_counter(name="risada", prefix="A Mirele já riu")
 create_counter(name="taxado", prefix="O Casado já foi taxado")
 create_counter(name="breja", prefix="O Casado já bebeu")
 create_counter(name="chat", prefix="O Casado não leu o chat")
-
+create_counter(name="aviao", prefix="O avião já passou")
 
 # TODO: comando solicitado pelo @Tairritadotio
 @bot.command(name="dica")
@@ -335,9 +335,7 @@ async def fn_motivacao(ctx):
     session = HTMLSession()
     req_selecionada = session.get("https://motivaai.nandomoreira.dev/")
 
-    motivacao_selecionada = req_selecionada.html.find("blockquote")[
-        0
-    ].text.split("\n")
+    motivacao_selecionada = req_selecionada.html.find("blockquote")[0].text.split("\n")
 
     frase = motivacao_selecionada[0]
     autor = motivacao_selecionada[1]
