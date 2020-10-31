@@ -357,7 +357,7 @@ async def fn_add_mensagem_engajamento(ctx):
     if len(ctx.content) > 30:
         # gravar a mensagem de ban comprada pelo usuário
         arquivo_texto_engajamento = open(
-            "files/files/texto_engajamento.txt",
+            "files/texto_engajamento.txt",
             "a+",
             encoding="utf-8",
         )
