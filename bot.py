@@ -2,41 +2,18 @@
 import asyncio
 import configparser
 import json
-import os
-import os.path
 import random
 import time
 from datetime import datetime
-from pathlib import Path
 
 import requests
 from requests_html import HTMLSession
 from twitchio.ext import commands
 
-<<<<<<< Updated upstream
-# Criar a pasta caso não exista.
-if not os.path.exists('files'):
-    os.mkdir('files')
-    print('Pasta criada.')
-
-os.chdir('files')  # Muda para a pasta files.
-Path("commands.json").touch()  # Cria o arquivo caso não tenha ainda.
-
-# Acessar o arquivo e recuperar os comandos anteriormente criados.
-with open("commands.json", 'r', encoding='UTF-8') as file:
-    try:
-        namecommand = json.load(file)
-    except ValueError:
-        namecommand = {}
-    finally:
-        print(type(namecommand), namecommand)
-
-=======
 # Acessar o arquivo e recuperar os comandos anteriormente criados.
 with open("files/commands.json", 'r', encoding='UTF-8') as file:
     namecommand = json.load(file)
     print('Comandos recuperados:', namecommand)
->>>>>>> Stashed changes
 
 config = configparser.ConfigParser()
 config.read("config.ini")
@@ -460,11 +437,7 @@ async def add_command(ctx):
     global namecommand
 
     def save_file(save=dict):  # Salvar no arquivo as alterações
-<<<<<<< Updated upstream
-        with open("commands.json", 'w+', encoding='utf-8') as file:
-=======
         with open("files/commands.json", 'w+', encoding='utf-8') as file:
->>>>>>> Stashed changes
             comandos = json.dumps(save, indent=True, ensure_ascii=False)
             file.write(comandos)
             print("comando salvo")
