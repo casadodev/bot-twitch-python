@@ -175,6 +175,8 @@ create_counter(name="chat", prefix="O Casado não leu o chat")
 create_counter(name="aviao", prefix="O avião já passou")
 
 # TODO: comando solicitado pelo @Tairritadotio
+
+
 @bot.command(name="dica")
 async def fn_dica(ctx):
     await ctx.send_me(
