@@ -46,7 +46,7 @@ async def event_ready():
         "Mostrando os comandos disponíveis no bot"
 
         msg_aleatoria = list(
-            open("texto_engajamento.txt", encoding="utf-8"),
+            open("files/texto_engajamento.txt", encoding="utf-8"),
         )
         comandos = (
             '/me os comandos do bot são "exclamação + :" ban +usuário, '
@@ -159,7 +159,7 @@ def create_counter(*, name, prefix, singular="vez", plural="vezes"):
     @bot.command(name=name)
     async def _counter(ctx):
         date = datetime.now()
-        with open("counters.json") as current_json:
+        with open("files/counters.json") as current_json:
             raw_json = json.load(current_json)
             amount = raw_json[name]["qtd"] = raw_json[name]["qtd"] + 1
             current_list_dates = raw_json[name]["dates"]
@@ -168,7 +168,7 @@ def create_counter(*, name, prefix, singular="vez", plural="vezes"):
         suffix = plural if amount > 1 else singular
         await ctx.send_me(f"{prefix} {amount} {suffix}")
 
-        with open("counters.json", "w") as file_write:
+        with open("files/counters.json", "w") as file_write:
             json.dump(raw_json, file_write)
 
 
@@ -357,7 +357,7 @@ async def fn_add_mensagem_engajamento(ctx):
     if len(ctx.content) > 30:
         # gravar a mensagem de ban comprada pelo usuário
         arquivo_texto_engajamento = open(
-            "files/texto_engajamento.txt",
+            "files/files/texto_engajamento.txt",
             "a+",
             encoding="utf-8",
         )
