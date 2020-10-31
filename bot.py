@@ -357,7 +357,7 @@ async def fn_add_mensagem_engajamento(ctx):
     if len(ctx.content) > 30:
         # gravar a mensagem de ban comprada pelo usuário
         arquivo_texto_engajamento = open(
-            "texto_engajamento.txt",
+            "files/texto_engajamento.txt",
             "a+",
             encoding="utf-8",
         )
@@ -387,7 +387,7 @@ async def fn_ban(ctx):
         await ctx.send_me("para banir alguém, é preciso incluir o nome o usuário")
 
     if len(ctx.content.split(" ")[1]) > 3:
-        lista_ban = open("texto_bans.txt", encoding="utf-8")
+        lista_ban = open("files/texto_bans.txt", encoding="utf-8")
 
         _, _, alvo = ctx.content.lower().partition(" ")
         tipo_ban = random.choice(list(lista_ban))
@@ -415,7 +415,7 @@ async def fn_addban(ctx):
         # gravar a mensagem de ban comprada pelo usuário
 
         arquivo_texto_bans = open(
-            "texto_moderacao_bans.txt",
+            "files/texto_moderacao_bans.txt",
             "a+",
             encoding="utf-8",
         )
@@ -469,7 +469,7 @@ async def add_command(ctx):
 # @bot.command(name='atividade')
 # async def fn_chat(ctx, nick='casadodevbot'):
 # 'QUANTIDADE DE MENSAGENS QUE A PESSOA ENVIOU NA LIVE'
-# msg_pessoas = open('quantidade_pessoas.txt', encoding='utf-8')
+# msg_pessoas = open('files/quantidade_pessoas.txt', encoding='utf-8')
 
 # sets = set(pessoas_online)
 
