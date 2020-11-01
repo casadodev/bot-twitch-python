@@ -10,6 +10,11 @@ import requests
 from requests_html import HTMLSession
 from twitchio.ext import commands
 
+# Acessar o arquivo e recuperar os comandos anteriormente criados.
+with open("files/commands.json", 'r', encoding='UTF-8') as file:
+    namecommand = json.load(file)
+    print('Comandos recuperados:', namecommand)
+
 config = configparser.ConfigParser()
 config.read("config.ini")
 
@@ -423,6 +428,44 @@ async def fn_addban(ctx):
         await ctx.send_me("Mensagem de ban adicionada. aguardando aprovação.")
 
 
+# Para poder adicionar/editar/deletar comandos pelo chat (apenas gerados pelo !comando)
+@bot.command(name='comando')
+async def add_command(ctx):
+    if not ctx.author.is_mod:
+        return
+
+    global namecommand
+
+    def save_file(save=dict):  # Salvar no arquivo as alterações
+        with open("files/commands.json", 'w+', encoding='utf-8') as file:
+            comandos = json.dumps(save, indent=True, ensure_ascii=False)
+            file.write(comandos)
+            print("comando salvo")
+
+    comando = ctx.content.split()[2]
+    msg = " ".join(ctx.content.split()[3:])
+    if ctx.content.split()[1] == 'add':  # Adicionar o comando novo
+        namecommand[comando] = msg
+        print(f"Comando {comando} adicionado por {ctx.author.name}. Lista de comando adicionados {namecommand}")
+        save_file(namecommand)
+        mensagem = f"Comando '{comando}' com a mensagem '{msg}' foi adicionada com sucesso."
+
+    elif ctx.content.split()[1] == 'edit':  # Editar um comando
+        for command, message in namecommand.items():
+            if command == comando:
+                namecommand[command] = msg
+                print(f"A mensagem do comando '{comando}' foi alterado para '{message}'")
+                save_file(namecommand)
+                mensagem = f"A mensagem do comando '{comando}' foi alterado para '{msg}' com sucesso."
+
+    elif ctx.content.split()[1] == 'del':  # Deletar um comando
+        namecommand.pop(comando)
+        save_file(namecommand)
+        mensagem = f"O comando '{comando}' foi deletado com sucesso."
+
+    await ctx.channel.send(mensagem)
+
+
 # @bot.command(name='atividade')
 # async def fn_chat(ctx, nick='casadodevbot'):
 # 'QUANTIDADE DE MENSAGENS QUE A PESSOA ENVIOU NA LIVE'
@@ -458,19 +501,19 @@ async def event_message(ctx):
     if "bom dia" in ctx.content.lower():
         await ctx.channel.send_me(f"Bom dia, @{ctx.author.name}! Como você está?")
 
-    if "boa tarde" in ctx.content.lower():
+    elif "boa tarde" in ctx.content.lower():
         await ctx.channel.send_me(f"Boa tarde, @{ctx.author.name}! Como você está?")
 
-    if "boa noite" in ctx.content.lower():
+    elif "boa noite" in ctx.content.lower():
         await ctx.channel.send_me(f"Boa noite, @{ctx.author.name}! Como você está?")
 
-    if "boa madrugada" in ctx.content.lower():
+    elif "boa madrugada" in ctx.content.lower():
         await ctx.channel.send_me(
             f"Boa madrugada aeew, @{ctx.author.name}! Como você está?",
         )
 
     # culpa do @Super_Feliz - o tecladod ele o trolou
-    if "boa note" in ctx.content.lower():
+    elif "boa note" in ctx.content.lower():
         await ctx.channel.send_me(
             f"Boa noite, @{ctx.author.name}! Como você está? Seu teclado te trolou...",
         )
@@ -501,6 +544,16 @@ async def event_message(ctx):
 
     if "sextou" in ctx.content.lower():
         await ctx.channel.send_me("SEXTOUUUUUUU DIA DE FAZER PUSH NA MASTER!!!")
+
+    # Para rodar os comandos criados pelo !comando
+    if "!" == ctx.content.split()[0][0]:
+        comando = ctx.content.split()[0]
+        for command, message in namecommand.items():
+            if comando.replace("!", "") == command:
+                name = command
+                msg = message
+                print(f"Comando chamado:'{name}' -> '{msg}'")
+                await ctx.channel.send(msg)
 
 
 if __name__ == "__main__":
