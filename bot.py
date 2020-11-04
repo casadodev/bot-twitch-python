@@ -429,23 +429,44 @@ async def fn_addban(ctx):
         await ctx.send_me("Mensagem de ban adicionada. aguardando aprovação.")
 
 
-# Correio elegante com voz no chat
+# Correio elegante com voz no chat, ativado manualmente por moderador
 @bot.command(name="correioelegante")
 async def fn_correioElegante(ctx):
-    mensagem = ctx.content.lower()[17:]
-    print(f"@{ctx.author.name}: {mensagem}")
+    if ctx.author.is_mod:
+        mensagem = ctx.content.lower()[17:]
+        print(f"@{ctx.author.name}: {mensagem}")
 
-    moderando = input("Aceita o correio elegante? ")
+        moderando = input("Aceita o correio elegante? ")
 
-    if moderando == "sim":
-        print("Correio elegante aceito...")
-        engine = pyttsx3.init()
-        engine.say(mensagem)
-        engine.runAndWait()
-        return await ctx.send_me("Só love SingsNote SingsNote SingsNote <3")
-    else:
-        print("correio elegante não aceito")
-        return await ctx.send_me(f"@{ctx.author.name} seu correio elegante não foi aprovado. :(")
+        if moderando == "sim":
+            print("Correio elegante aceito...")
+            engine = pyttsx3.init()
+            engine.say(mensagem)
+            engine.runAndWait()
+            return await ctx.send_me("Só love SingsNote SingsNote SingsNote <3")
+        else:
+            print("correio elegante não aceito")
+            return await ctx.send_me(f"@{ctx.author.name} seu correio elegante não foi aprovado. :(")
+
+
+# Correio elegante com voz no chat, ativado manualmente por moderador
+@bot.command(name="agradecimento")
+async def fn_agradecimento(ctx):
+    if ctx.author.is_mod:
+        mensagem = ctx.content.lower()[15:]
+        print(f"@{ctx.author.name}: {mensagem}")
+
+        moderando = input("Aceita o agradecimento? ")
+
+        if moderando == "sim":
+            print("Agradecimento aceito...")
+            engine = pyttsx3.init()
+            engine.say(mensagem)
+            engine.runAndWait()
+            return await ctx.send_me("Agradecido HeyGuys")
+        else:
+            print("agradecimento não aceito")
+            return await ctx.send_me(f"@{ctx.author.name} seu agradecimento não foi aceito. :(")
 
 
 # Para poder adicionar/editar/deletar comandos pelo chat (apenas gerados pelo !comando)
