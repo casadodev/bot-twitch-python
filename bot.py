@@ -429,7 +429,7 @@ async def fn_addban(ctx):
         await ctx.send_me("Mensagem de ban adicionada. aguardando aprovação.")
 
 
-# Correio elegante com voz no chat
+# Correio elegante com voz no chat, ativado manualmente por moderador
 @bot.command(name="correioelegante")
 async def fn_correioElegante(ctx):
     if ctx.author.is_mod:
@@ -449,7 +449,7 @@ async def fn_correioElegante(ctx):
             return await ctx.send_me(f"@{ctx.author.name} seu correio elegante não foi aprovado. :(")
 
 
-# Correio elegante com voz no chat
+# Correio elegante com voz no chat, ativado manualmente por moderador
 @bot.command(name="agradecimento")
 async def fn_agradecimento(ctx):
     if ctx.author.is_mod:
