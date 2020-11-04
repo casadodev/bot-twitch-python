@@ -5,8 +5,8 @@ import json
 import random
 import time
 from datetime import datetime
-import pyttsx3
 
+import pyttsx3
 import requests
 from requests_html import HTMLSession
 from twitchio.ext import commands
