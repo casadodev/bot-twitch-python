@@ -6,6 +6,7 @@ import random
 import time
 from datetime import datetime
 
+import pyttsx3
 import requests
 from requests_html import HTMLSession
 from twitchio.ext import commands
@@ -426,6 +427,25 @@ async def fn_addban(ctx):
 
         print(f"texto de ban adicionado por @{ctx.author.name}")
         await ctx.send_me("Mensagem de ban adicionada. aguardando aprovação.")
+
+
+# Correio elegante com voz no chat
+@bot.command(name="correioelegante")
+async def fn_correioElegante(ctx):
+    mensagem = ctx.content.lower()[17:]
+    print(f"@{ctx.author.name}: {mensagem}")
+
+    moderando = input("Aceita o correio elegante? ")
+
+    if moderando == "sim":
+        print("Correio elegante aceito...")
+        engine = pyttsx3.init()
+        engine.say(mensagem)
+        engine.runAndWait()
+        return await ctx.send_me("Só love SingsNote SingsNote SingsNote <3")
+    else:
+        print("correio elegante não aceito")
+        return await ctx.send_me(f"@{ctx.author.name} seu correio elegante não foi aprovado. :(")
 
 
 # Para poder adicionar/editar/deletar comandos pelo chat (apenas gerados pelo !comando)
