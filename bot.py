@@ -109,7 +109,7 @@ async def fn_instagram(ctx):
 @bot.command(name="evento")
 async def fn_evento(ctx):
     await ctx.send_me(
-        "Dia 23/10 as 17:00h, venha participar do HacktoberFest do CasadoDev - https://casado.dev",
+        "Dia 23/10 as 17:00h, fizemos nosso primeiro evento: HacktoberFest do CasadoDev - https://casado.dev",
     )
 
 
@@ -312,6 +312,9 @@ async def fn_climaTempo(ctx):
 # foi um ótimo resgate realizado pelo @MechanicallyDev
 @bot.command(name="piada")
 async def fn_piadas(ctx):
+    if not ctx.author.is_subscriber:
+        return await ctx.send_me("Comando liberado para subs! Agradeça usando os pontos do canal.")
+
     # https://api-de-charadas.fredes.now.sh/
 
     # piada_selecionada = requests.get(
@@ -432,41 +435,45 @@ async def fn_addban(ctx):
 # Correio elegante com voz no chat, ativado manualmente por moderador
 @bot.command(name="correioelegante")
 async def fn_correioElegante(ctx):
-    if ctx.author.is_mod:
-        mensagem = ctx.content.lower()[17:]
-        print(f"@{ctx.author.name}: {mensagem}")
+    if not ctx.author.is_subscriber:
+        return await ctx.send_me("Comando liberado para subs! Agradeça usando os pontos do canal.")
 
-        moderando = input("Aceita o correio elegante? ")
+    mensagem = ctx.content.lower()[17:]
+    print(f"@{ctx.author.name}: {mensagem}")
 
-        if moderando == "sim":
-            print("Correio elegante aceito...")
-            engine = pyttsx3.init()
-            engine.say(mensagem)
-            engine.runAndWait()
-            return await ctx.send_me("Só love SingsNote SingsNote SingsNote <3")
-        else:
-            print("correio elegante não aceito")
-            return await ctx.send_me(f"@{ctx.author.name} seu correio elegante não foi aprovado. :(")
+    moderando = input("Aceita o correio elegante? ")
+
+    if moderando == "s":
+        print("Correio elegante aceito...")
+        engine = pyttsx3.init()
+        engine.say(mensagem)
+        engine.runAndWait()
+        return await ctx.send_me("Só love SingsNote SingsNote SingsNote <3")
+    else:
+        print("correio elegante não aceito")
+        return await ctx.send_me(f"@{ctx.author.name} seu correio elegante não foi aprovado. :(")
 
 
 # Correio elegante com voz no chat, ativado manualmente por moderador
 @bot.command(name="agradecimento")
 async def fn_agradecimento(ctx):
-    if ctx.author.is_mod:
-        mensagem = ctx.content.lower()[15:]
-        print(f"@{ctx.author.name}: {mensagem}")
+    if not ctx.author.is_subscriber:
+        return await ctx.send_me("Comando liberado para subs! Agradeça usando os pontos do canal.")
 
-        moderando = input("Aceita o agradecimento? ")
+    mensagem = ctx.content.lower()[15:]
+    print(f"@{ctx.author.name}: {mensagem}")
 
-        if moderando == "sim":
-            print("Agradecimento aceito...")
-            engine = pyttsx3.init()
-            engine.say(mensagem)
-            engine.runAndWait()
-            return await ctx.send_me("Agradecido HeyGuys")
-        else:
-            print("agradecimento não aceito")
-            return await ctx.send_me(f"@{ctx.author.name} seu agradecimento não foi aceito. :(")
+    moderando = input("Aceita o agradecimento? ")
+
+    if moderando == "s":
+        print("Agradecimento aceito...")
+        engine = pyttsx3.init()
+        engine.say(mensagem)
+        engine.runAndWait()
+        return await ctx.send_me("Agradecido HeyGuys")
+    else:
+        print("agradecimento não aceito")
+        return await ctx.send_me(f"@{ctx.author.name} seu agradecimento não foi aceito. :(")
 
 
 # Para poder adicionar/editar/deletar comandos pelo chat (apenas gerados pelo !comando)
@@ -505,25 +512,6 @@ async def add_command(ctx):
         mensagem = f"O comando '{comando}' foi deletado com sucesso."
 
     await ctx.channel.send(mensagem)
-
-
-# @bot.command(name='atividade')
-# async def fn_chat(ctx, nick='casadodevbot'):
-# 'QUANTIDADE DE MENSAGENS QUE A PESSOA ENVIOU NA LIVE'
-# msg_pessoas = open('files/quantidade_pessoas.txt', encoding='utf-8')
-
-# sets = set(pessoas_online)
-
-# a = [1,2,3,4,5]
-# b = [4,5,6,7,8]
-
-# for pessoa in sets:
-# for count in count_pessoa:
-# if count
-# count_pessoa.append([])
-# print(f'online {count_pessoa}')
-
-# await ctx.send(f'{1 + 5}')
 
 
 @bot.event
