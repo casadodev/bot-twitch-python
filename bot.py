@@ -331,7 +331,7 @@ async def fn_piadas(ctx):
     if 'loira' in piada_selecionada['question']:
         print('veio piada de loira, refazer!')
         print(piada_selecionada)
-        return await ctx.send_me("Deu azar, veio piada de loira")        
+        return await ctx.send_me("Deu azar, veio piada de loira")
 
     print(f"pergunta: {piada_selecionada['question']}")
     print(f"resposta: {piada_selecionada['answer']}")
