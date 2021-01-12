@@ -312,8 +312,8 @@ async def fn_climaTempo(ctx):
 # foi um ótimo resgate realizado pelo @MechanicallyDev
 @bot.command(name="piada")
 async def fn_piadas(ctx):
-    if not (ctx.author.is_subscriber | ctx.author.is_mod):
-        return await ctx.send_me("Comando liberado para subs e os melhores mods! Peça piada com os pontos do canal.")
+    # if not (ctx.author.is_subscriber | ctx.author.is_mod):
+    #    return await ctx.send_me("Comando liberado para subs e os melhores mods! Peça piada com os pontos do canal.")
 
     # https://api-de-charadas.fredes.now.sh/
 
