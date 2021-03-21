@@ -6,7 +6,7 @@
     <div>
         <a href="https://github.com/casadodev/bot-twitch-python/actions?query=branch:master+workflow:Build">
             <img src="https://github.com/casadodev/bot-twitch-python/workflows/Build/badge.svg?branch=master" alt="badge build status">
-        </a>        
+        </a>
         <a href="https://results.pre-commit.ci/badge/github/casadodev/bot-twitch-python/master.svg">
             <img src="https://results.pre-commit.ci/badge/github/casadodev/bot-twitch-python/master.svg" alt="badge pre-commit status">
         </a>
