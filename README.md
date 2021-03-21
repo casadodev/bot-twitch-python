@@ -4,8 +4,11 @@
     <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/0940a2f0-2f2c-49d3-a87a-a3f4b3021b03-profile_image-300x300.png" alt="Icon casa do dev">
     <br/><br/>
     <div>
-        <a href="(https://github.com/casadodev/bot-twitch-python/actions?query=branch:master+workflow:Build">
+        <a href="https://github.com/casadodev/bot-twitch-python/actions?query=branch:master+workflow:Build">
             <img src="https://github.com/casadodev/bot-twitch-python/workflows/Build/badge.svg?branch=master" alt="badge build status">
+        </a>        
+        <a href="https://results.pre-commit.ci/badge/github/casadodev/bot-twitch-python/master.svg">
+            <img src="https://results.pre-commit.ci/badge/github/casadodev/bot-twitch-python/master.svg" alt="badge pre-commit status">
         </a>
         <img src="https://img.shields.io/github/contributors/casadodev/bot-twitch-python">
         <a href="https://github.com/casadodev/bot-twitch-python/issues">
