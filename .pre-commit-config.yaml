@@ -1,12 +1,12 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.4.0
+    rev: v4.0.1
     hooks:
       - id: check-merge-conflict
       - id: check-yaml
       - id: trailing-whitespace
-  - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.4
+  - repo: https://github.com/PyCQA/flake8
+    rev: 3.9.2
     hooks:
       - id: flake8
         additional_dependencies:
@@ -15,15 +15,15 @@ repos:
           - flake8-comprehensions==3.2.3
           - flake8-tidy-imports==4.1.0
   - repo: https://github.com/pre-commit/mirrors-autopep8
-    rev: v1.5.4
+    rev: v1.5.7
     hooks:
       - id: autopep8
   - repo: https://github.com/asottile/add-trailing-comma
-    rev: v2.0.2
+    rev: v2.1.0
     hooks:
       - id: add-trailing-comma
         args: [--py36-plus]
   - repo: https://github.com/PyCQA/isort
-    rev: 5.7.0
+    rev: 5.8.0
     hooks:
       - id: isort
