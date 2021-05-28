@@ -37,7 +37,7 @@ count_pessoa = []
 
 @bot.event
 async def event_ready():
-    "Chama quando o bot está online."
+    "Chama quando o bot casadodev está online."
     print(f"@{nick_bot} está online! ")
     ws = bot._ws  # só é chamado no evento inicial
 
@@ -312,8 +312,8 @@ async def fn_climaTempo(ctx):
 # foi um ótimo resgate realizado pelo @MechanicallyDev
 @bot.command(name="piada")
 async def fn_piadas(ctx):
-    if not ctx.author.is_subscriber:
-        return await ctx.send_me("Comando liberado para subs! Agradeça usando os pontos do canal.")
+    # if not (ctx.author.is_subscriber | ctx.author.is_mod):
+    #    return await ctx.send_me("Comando liberado para subs e os melhores mods! Peça piada com os pontos do canal.")
 
     # https://api-de-charadas.fredes.now.sh/
 
@@ -324,9 +324,14 @@ async def fn_piadas(ctx):
     #         'Content-type': 'application/json'
     #     }).json()
 
-    piada_selecionada = requests.get(
+    dados_selecionada = requests.get(
         "https://api-de-charadas.fredes.now.sh",
-    ).json()
+    )
+
+    if('A server error has occurred' in dados_selecionada.text):
+        return await ctx.send_me("O servidor de piadas de pal. Que piada né, foi mal!")
+    else:
+        piada_selecionada = dados_selecionada.json()
 
     if 'loira' in piada_selecionada['question']:
         print('veio piada de loira, refazer!')
@@ -440,7 +445,7 @@ async def fn_addban(ctx):
 # Correio elegante com voz no chat, ativado manualmente por moderador
 @bot.command(name="correioelegante")
 async def fn_correioElegante(ctx):
-    if not ctx.author.is_subscriber:
+    if not (ctx.author.is_subscriber | ctx.author.is_mod):
         return await ctx.send_me("Comando liberado para subs! Agradeça usando os pontos do canal.")
 
     mensagem = ctx.content.lower()[17:]
@@ -462,7 +467,7 @@ async def fn_correioElegante(ctx):
 # Correio elegante com voz no chat, ativado manualmente por moderador
 @bot.command(name="agradecimento")
 async def fn_agradecimento(ctx):
-    if not ctx.author.is_subscriber:
+    if not (ctx.author.is_subscriber | ctx.author.is_mod):
         return await ctx.send_me("Comando liberado para subs! Agradeça usando os pontos do canal.")
 
     mensagem = ctx.content.lower()[15:]
