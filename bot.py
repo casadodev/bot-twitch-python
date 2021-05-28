@@ -37,7 +37,7 @@ count_pessoa = []
 
 @bot.event
 async def event_ready():
-    "Chama quando o bot está online."
+    "Chama quando o bot casadodev está online."
     print(f"@{nick_bot} está online! ")
     ws = bot._ws  # só é chamado no evento inicial
 
@@ -324,9 +324,15 @@ async def fn_piadas(ctx):
     #         'Content-type': 'application/json'
     #     }).json()
 
-    piada_selecionada = requests.get(
+    dados_selecionada = requests.get(
         "https://api-de-charadas.fredes.now.sh",
-    ).json()
+    )
+
+    if('A server error has occurred' in dados_selecionada.text):
+        return await ctx.send_me("O servidor de piadas de pal. Que piada né, foi mal!")
+    else:
+        piada_selecionada = dados_selecionada.json()
+
 
     if 'loira' in piada_selecionada['question']:
         print('veio piada de loira, refazer!')
