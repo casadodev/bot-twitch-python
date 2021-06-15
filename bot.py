@@ -595,6 +595,5 @@ async def event_message(ctx):
                 print(f"Comando chamado:'{name}' -> '{msg}'")
                 await ctx.channel.send(msg)
 
-
 if __name__ == "__main__":
     bot.run()
