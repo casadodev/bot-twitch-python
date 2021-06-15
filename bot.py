@@ -333,7 +333,6 @@ async def fn_piadas(ctx):
     else:
         piada_selecionada = dados_selecionada.json()
 
-
     if 'loira' in piada_selecionada['question']:
         print('veio piada de loira, refazer!')
         print(piada_selecionada)
