@@ -6,7 +6,7 @@ repos:
       - id: check-yaml
       - id: trailing-whitespace
   - repo: https://github.com/PyCQA/flake8
-    rev: 4.0.1
+    rev: 5.0.4
     hooks:
       - id: flake8
         additional_dependencies:
@@ -15,7 +15,7 @@ repos:
           - flake8-comprehensions==3.2.3
           - flake8-tidy-imports==4.1.0
   - repo: https://github.com/pre-commit/mirrors-autopep8
-    rev: v1.6.0
+    rev: v1.7.0
     hooks:
       - id: autopep8
   - repo: https://github.com/asottile/add-trailing-comma
