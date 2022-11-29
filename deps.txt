@@ -1,4 +1,4 @@
-requests>=2.24.0
-twitchio>=1.1.0
-requests-html>=0.10.0
+requests >= 2.24.0
+twitchio >= 1.1.0
+requests-html == 0.10.0
 pyttsx3
