@@ -23,7 +23,6 @@ with open("files/commands.json", 'r', encoding='UTF-8') as file:
     print('Comandos recuperados:', namecommand)
 
 
-
 class Bot(commands.Bot):
 
     def __init__(self):
@@ -132,32 +131,6 @@ class Bot(commands.Bot):
         await bot.handle_commands(ctx)
 
 
-    @commands.command(name="hello")
-    async def fn_hello(self, ctx: commands.Context):
-        await ctx.send(f'Hello {ctx.author.name}!')
-
-
-    # @commands.event
-    # async def event_command_error(ctx: commands.Context, error):
-    #     # pass
-    #     print('comando não existe')
-
-
-    # @commands.command(name="steam")
-    # async def fn_steam(ctx):
-    #     link = "https://s.team/p/gdmd-fkhb/fmdrjvgt"
-    #     await ctx.send(
-    #         f'Jogue conosco usando o código "1115830096" ou usando o link {link}',
-    #     )
-
-
-    @commands.command(name="bot")
-    async def fn_bot(self, ctx: commands.Context):
-        link = "https://github.com/casadodev/bot-twitch-python"
-        await ctx.send(
-            f"Deseja ajudar na construção do bot!? acesse o link e torne-se um contribuidor {link}",
-        )
-
     @commands.command(name="xxstartxx")
     async def fn_start(self, ctx: commands.Context):
         # Mostrando os comandos disponíveis no bot
@@ -185,6 +158,27 @@ class Bot(commands.Bot):
                 await asyncio.sleep(240.0)
 
 
+    @commands.command(name="hello")
+    async def fn_hello(self, ctx: commands.Context):
+        await ctx.send(f'Hello {ctx.author.name}!')
+
+
+    @commands.command(name="steam")
+    async def fn_steam(ctx):
+        link = "https://s.team/p/gdmd-fkhb/fmdrjvgt"
+        await ctx.send(
+            f'Jogue conosco usando o código "1115830096" ou usando o link {link}',
+        )
+
+
+    @commands.command(name="bot")
+    async def fn_bot(self, ctx: commands.Context):
+        link = "https://github.com/casadodev/bot-twitch-python"
+        await ctx.send(
+            f"Deseja ajudar na construção do bot!? acesse o link e torne-se um contribuidor {link}",
+        )
+
+
     @commands.command(name="whatsapp")
     async def fn_whatsapp(self, ctx: commands.Context):
         await ctx.send(
@@ -198,26 +192,19 @@ class Bot(commands.Bot):
 
 
     @commands.command(name="instagram")
-    async def fn_instagram(ctx):
+    async def fn_instagram(self, ctx: commands.Context):
         await ctx.send("Perfil no Inta https://instagram.com/casadodev")
 
 
-    # @commands.command(name="evento")
-    # async def fn_evento(ctx):
-    #     await ctx.send(
-    #         "Dia 23/10 as 17:00h, fizemos nosso primeiro evento: HacktoberFest do CasadoDev - https://casado.dev",
-    #     )
-
-
     @commands.command(name="horadosorteio")
-    async def fn_horasorteio(ctx):
+    async def fn_horasorteio(self, ctx: commands.Context):
         await ctx.send("HORA DO SORTEIO!!!!!!")
         await ctx.send("VENHA PARTICIPAR")
         await ctx.send("QUEM SERÁ O SORTUDO DA NOITE Kappa")
 
 
     @commands.command(name="sorteio")
-    async def fn_sorteio(ctx):
+    async def fn_sorteio(self, ctx: commands.Context):
         await ctx.send(
             "Sorteios de cursos da Udemy de até R$40. Subs/Inscritos tem 3x mais chances de ganhar. "
             "O sorteio está disponível apenas para quem segue o canal a mais de 2h, ou inscritos. "
@@ -225,25 +212,25 @@ class Bot(commands.Bot):
         )
 
 
-    # Super susto do @ChicoCodes
-    @commands.command(name="tapao")
-    async def fn_sustoTapao(ctx):
-        await ctx.send(
-            "Veja o clipe do super susto que o @ChicoCodes me deu e "
-            "quase tudo https://clips.twitch.tv/CoweringSpunkyMochaSpicyBoy hahaha",
-        )
+    # Super susto do @ChicoCodes - 
+    # @commands.command(name="tapao")
+    # async def fn_sustoTapao(self, ctx: commands.Context):
+    #     await ctx.send(
+    #         "Veja o clipe do super susto que o @ChicoCodes me deu e "
+    #         "quase tudo https://clips.twitch.tv/CoweringSpunkyMochaSpicyBoy hahaha",
+    #     )
 
 
-    @commands.command(name="fiature")
-    async def fn_feature(ctx):
-        await ctx.send(
-            "Aprenda a pronunciar feature! https://clips.twitch.tv/SmellyPluckyBubbleteaStinkyCheese",
-        )
+    # @commands.command(name="fiature")
+    # async def fn_feature(self, ctx: commands.Context):
+    #     await ctx.send(
+    #         "Aprenda a pronunciar feature! https://clips.twitch.tv/SmellyPluckyBubbleteaStinkyCheese",
+    #     )
 
 
     # TODO: pedido de músicas no canal - por @Super_Feliz
     @commands.command(name="musica")
-    async def fn_adicionaMusica(ctx):
+    async def fn_adicionaMusica(self, ctx: commands.Context):
         await ctx.send("Está sendo desenvolvido comando para tocar as músicas no canal")
 
 
@@ -254,7 +241,7 @@ class Bot(commands.Bot):
 
     def create_counter(*, name, prefix, singular="vez", plural="vezes"):
         @commands.command(name=name)
-        async def _counter(ctx):
+        async def _counter(self, ctx: commands.Context):
             date = datetime.now()
             with open("files/counters.json") as current_json:
                 raw_json = json.load(current_json)
@@ -279,14 +266,14 @@ class Bot(commands.Bot):
     # TODO: comando solicitado pelo @Tairritadotio
 
     @commands.command(name="dica")
-    async def fn_dica(ctx):
+    async def fn_dica(self, ctx: commands.Context):
         await ctx.send(
             "Se der erro no seu código poder ser que algo esteja errado ou algo não esteja certo.",
         )
 
 
     @commands.command(name="raid")
-    async def fn_raid(ctx):
+    async def fn_raid(self, ctx: commands.Context):
         await ctx.send(
             """Kappa PogChamp PogChamp Kappa PogChamp  Kappa PogChamp
             PogChamp Kappa PogChamp Kappa PogChamp PogChamp Kappa PogChamp""",
@@ -295,7 +282,7 @@ class Bot(commands.Bot):
 
     # comando para dicas de filmes
     @commands.command(name="filme")
-    async def fn_filme(ctx):
+    async def fn_filme(self, ctx: commands.Context):
         filme_indicado = "Qualquer um do Nicolas Cage"
         print(f"Filme indicado: {filme_indicado}")
         await ctx.send(f"Nosso bot te indica o filme: {filme_indicado}")
@@ -303,7 +290,7 @@ class Bot(commands.Bot):
 
     # TODO: biscoito / robson - por @ChicoCodes
     @commands.command(name="robson")
-    async def fn_robson(ctx):
+    async def fn_robson(self, ctx: commands.Context):
         await ctx.send(
             f"@{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!",
         )
@@ -311,7 +298,7 @@ class Bot(commands.Bot):
 
     # TODO: biscoito / robson - por @ChicoCodes
     @commands.command(name="biscoito")
-    async def fn_biscoito(ctx):
+    async def fn_biscoito(self, ctx: commands.Context):
         await ctx.send(
             f"@{ctx.author.name} o correto é Biscoito! SE MANDAR BOLACHA É BAN. Chico disse, ta DITOOO!",
         )
@@ -319,7 +306,7 @@ class Bot(commands.Bot):
 
     # TODO: traduzir texto por - PO: @ChicoCodes, com grande ajuda do MechanicallyDev
     @commands.command(name="traduzir")
-    async def fn_traduzir(ctx):
+    async def fn_traduzir(self, ctx: commands.Context):
         "Traduz o texto para inglês"
         texto_solicitado = "+".join(ctx.content.split(" ")[1:])
 
@@ -337,7 +324,7 @@ class Bot(commands.Bot):
 
     # TODO: traduzir texto por - PO: @ChicoCodes, com grande ajuda do MechanicallyDev
     @commands.command(name="translate")
-    async def fn_translate(ctx):
+    async def fn_translate(self, ctx: commands.Context):
         "Traduz o texto para portugues"
         texto_solicitado = "+".join(ctx.content.split(" ")[1:])
 
@@ -355,7 +342,7 @@ class Bot(commands.Bot):
 
     # TODO: mostrar horóscopo
     @commands.command(name="horoscopo")
-    async def fn_horoscopo(ctx):
+    async def fn_horoscopo(self, ctx: commands.Context):
         "Mostra o signo solicitado, com base no site Capricho"
 
         session = HTMLSession()
@@ -371,7 +358,7 @@ class Bot(commands.Bot):
     # TODO: Tratar localization
     # comando de previsão do tempo - pedido do @MechanicallyDev
     @commands.command(name="clima")
-    async def fn_climaTempo(ctx):
+    async def fn_climaTempo(self, ctx: commands.Context):
         # Mostrar a previsão do tempo da região
         session = HTMLSession()
 
@@ -406,7 +393,7 @@ class Bot(commands.Bot):
     # TODO: filtrar palavras para blacklist e frases já liberadas pelo id
     # foi um ótimo resgate realizado pelo @MechanicallyDev
     @commands.command(name="piada")
-    async def fn_piadas(ctx):
+    async def fn_piadas(self, ctx: commands.Context):
         # if not (ctx.author.is_subscriber | ctx.author.is_mod):
         #    return await ctx.send_me("Comando liberado para subs e os melhores mods! Peça piada com os pontos do canal.")
 
@@ -446,7 +433,7 @@ class Bot(commands.Bot):
 
 
     @commands.command(name="motivar")
-    async def fn_motivacao(ctx):
+    async def fn_motivacao(self, ctx: commands.Context):
         "Mensagem motivacional para o chat"
         session = HTMLSession()
         req_selecionada = session.get("https://motivaai.nandomoreira.dev/")
@@ -484,14 +471,14 @@ class Bot(commands.Bot):
 
     # # foi uma ótima idéia do @Falvern_
     @commands.command(name="unban")
-    async def fn_unBan(ctx):
+    async def fn_unBan(self, ctx: commands.Context):
         # TODO: implementar o método anti-ban durante a Hacktoberfest
         frase = "invoca carta imbanivel e não pode ser banido!"
         await ctx.send(f"@{ctx.author.name} {frase}")
 
 
     @commands.command(name="ban")
-    async def fn_ban(ctx):
+    async def fn_ban(self, ctx: commands.Context):
         if len(ctx.content.split(" ")[1]) < 4:
             await ctx.send("para banir alguém, é preciso incluir o nome o usuário")
 
@@ -509,7 +496,7 @@ class Bot(commands.Bot):
 
 
     @commands.command(name="humildao")
-    async def fn_humildao(ctx):
+    async def fn_humildao(self, ctx: commands.Context):
         if len(ctx.content.split(" ")[1]) < 4:
             await ctx.send("Me diga quem é o Humildão, marca ele ai ResidentSleeper ")
 
@@ -519,7 +506,7 @@ class Bot(commands.Bot):
 
 
     @commands.command(name="addban")
-    async def fn_addban(ctx):
+    async def fn_addban(self, ctx: commands.Context):
         if len(ctx.content) > 30:
             # gravar a mensagem de ban comprada pelo usuário
 
@@ -539,7 +526,7 @@ class Bot(commands.Bot):
 
     # Correio elegante com voz no chat, ativado manualmente por moderador
     @commands.command(name="correioelegante")
-    async def fn_correioElegante(ctx):
+    async def fn_correioElegante(self, ctx: commands.Context):
         if not (ctx.author.is_subscriber | ctx.author.is_mod):
             return await ctx.send("Comando liberado para subs! Agradeça usando os pontos do canal.")
 
@@ -561,7 +548,7 @@ class Bot(commands.Bot):
 
     # Correio elegante com voz no chat, ativado manualmente por moderador
     @commands.command(name="agradecimento")
-    async def fn_agradecimento(ctx):
+    async def fn_agradecimento(self, ctx: commands.Context):
         if not (ctx.author.is_subscriber | ctx.author.is_mod):
             return await ctx.send("Comando liberado para subs! Agradeça usando os pontos do canal.")
 
@@ -583,7 +570,7 @@ class Bot(commands.Bot):
 
     # Para poder adicionar/editar/deletar comandos pelo chat (apenas gerados pelo !comando)
     @commands.command(name='comando')
-    async def add_command(ctx):
+    async def add_commando(self, ctx: commands.Context):
         if not ctx.author.is_mod:
             return
 
