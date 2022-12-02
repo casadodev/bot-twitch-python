@@ -20,7 +20,7 @@ count_pessoa = [],
 # Acessar o arquivo e recuperar os comandos anteriormente criados.
 with open("files/commands.json", 'r', encoding='UTF-8') as file:
     namecommand = json.load(file)
-    print('Comandos recuperados:', namecommand)
+    # print('Comandos recuperados:', namecommand)
 
 
 class Bot(commands.Bot):
@@ -223,6 +223,7 @@ class Bot(commands.Bot):
     # frases para enviar https://www.pensador.com/frases_para_correio_elegante/
 
 
+    # TODO: verificar e corrigir funções paralelas no counter
     def create_counter(*, name, prefix, singular="vez", plural="vezes"):
         @commands.command(name=name)
         async def _counter(self, ctx: commands.Context):
@@ -316,7 +317,7 @@ class Bot(commands.Bot):
         session = HTMLSession()
         url = "https://www.google.com/search?q=translate+to+portuguese+"
 
-        url_unificado = f"{url}{texto_solicitado}"
+        url_unificado = f"{url}{texto}"
 
         req_selecionada = session.get(url_unificado)
         texto_traduzido = req_selecionada.html.find("#tw-target-text")[0].text
