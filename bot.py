@@ -212,22 +212,6 @@ class Bot(commands.Bot):
         )
 
 
-    # Super susto do @ChicoCodes - 
-    # @commands.command(name="tapao")
-    # async def fn_sustoTapao(self, ctx: commands.Context):
-    #     await ctx.send(
-    #         "Veja o clipe do super susto que o @ChicoCodes me deu e "
-    #         "quase tudo https://clips.twitch.tv/CoweringSpunkyMochaSpicyBoy hahaha",
-    #     )
-
-
-    # @commands.command(name="fiature")
-    # async def fn_feature(self, ctx: commands.Context):
-    #     await ctx.send(
-    #         "Aprenda a pronunciar feature! https://clips.twitch.tv/SmellyPluckyBubbleteaStinkyCheese",
-    #     )
-
-
     # TODO: pedido de músicas no canal - por @Super_Feliz
     @commands.command(name="musica")
     async def fn_adicionaMusica(self, ctx: commands.Context):
@@ -306,38 +290,39 @@ class Bot(commands.Bot):
 
     # TODO: traduzir texto por - PO: @ChicoCodes, com grande ajuda do MechanicallyDev
     @commands.command(name="traduzir")
-    async def fn_traduzir(self, ctx: commands.Context):
+    async def fn_traduzir(self, ctx: commands.Context, *, texto):
         "Traduz o texto para inglês"
-        texto_solicitado = "+".join(ctx.content.split(" ")[1:])
 
         session = HTMLSession()
         url = "https://www.google.com/search?q=translate+to+english+"
 
-        url_unificado = f"{url}{texto_solicitado}"
+        url_unificado = f"{url}{texto}"
 
         req_selecionada = session.get(url_unificado)
         texto_traduzido = req_selecionada.html.find("#tw-target-text")[0].text
-        print(f"Tradução: {texto_traduzido}")
 
-        await ctx.send(f"translate: {texto_traduzido}")
+        print(f"Traduzir: {texto}")
+        print(f"Tradução: {str(texto_traduzido)}")
+
+        await ctx.send(f"translate: 🫡 {texto_traduzido}")
 
 
     # TODO: traduzir texto por - PO: @ChicoCodes, com grande ajuda do MechanicallyDev
-    @commands.command(name="translate")
-    async def fn_translate(self, ctx: commands.Context):
-        "Traduz o texto para portugues"
-        texto_solicitado = "+".join(ctx.content.split(" ")[1:])
+    # @commands.command(name="translate")
+    # async def fn_translate(self, ctx: commands.Context):
+    #     "Traduz o texto para portugues"
+    #     texto_solicitado = "+".join(ctx.content.split(" ")[1:])
 
-        session = HTMLSession()
-        url = "https://www.google.com/search?q=translate+to+portuguese+"
+    #     session = HTMLSession()
+    #     url = "https://www.google.com/search?q=translate+to+portuguese+"
 
-        url_unificado = f"{url}{texto_solicitado}"
+    #     url_unificado = f"{url}{texto_solicitado}"
 
-        req_selecionada = session.get(url_unificado)
-        texto_traduzido = req_selecionada.html.find("#tw-target-text")[0].text
-        print(f"Tradução: {texto_traduzido}")
+    #     req_selecionada = session.get(url_unificado)
+    #     texto_traduzido = req_selecionada.html.find("#tw-target-text")[0].text
+    #     print(f"Tradução: {texto_traduzido}")
 
-        await ctx.send(f"translate: {texto_traduzido}")
+    #     await ctx.send(f"translate: {texto_traduzido}")
 
 
     # TODO: mostrar horóscopo
