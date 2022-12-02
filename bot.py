@@ -346,14 +346,12 @@ class Bot(commands.Bot):
     # TODO: Tratar localization
     # comando de previsão do tempo - pedido do @MechanicallyDev
     @commands.command(name="clima")
-    async def fn_climaTempo(self, ctx: commands.Context):
+    async def fn_climaTempo(self, ctx: commands.Context, *, texto = 'guarulhos'):
         # Mostrar a previsão do tempo da região
         session = HTMLSession()
 
-        cidade_solicitada = "+".join(ctx.content.split(" ")[1:])
-
         req_selecionada = session.get(
-            f"https://www.google.com.br/search?q=tempo+{cidade_solicitada}",
+            f"https://www.google.com.br/search?q=tempo+{texto}",
         )
 
         cidade_selecionada = req_selecionada.html.find("#wob_loc")[0].text
@@ -375,7 +373,6 @@ class Bot(commands.Bot):
             f"/me Agora na cidade {cidade_selecionada}, é {horario_atual} "
             f"e está {temperatura_atual}{unidade}, com um clima {tipo_clima}",
         )
-        # await ctx.send('Está frio pra caramba em Itajaí! - teste em produção com sucesso')
 
 
     # TODO: filtrar palavras para blacklist e frases já liberadas pelo id
