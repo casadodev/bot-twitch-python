@@ -308,21 +308,22 @@ class Bot(commands.Bot):
 
 
     # TODO: traduzir texto por - PO: @ChicoCodes, com grande ajuda do MechanicallyDev
-    # @commands.command(name="translate")
-    # async def fn_translate(self, ctx: commands.Context):
-    #     "Traduz o texto para portugues"
-    #     texto_solicitado = "+".join(ctx.content.split(" ")[1:])
+    @commands.command(name="translate")
+    async def fn_translate(self, ctx: commands.Context, *, texto):
+        "Traduz o texto para portugues"
+        # texto_solicitado = "+".join(ctx.content.split(" ")[1:])
 
-    #     session = HTMLSession()
-    #     url = "https://www.google.com/search?q=translate+to+portuguese+"
+        session = HTMLSession()
+        url = "https://www.google.com/search?q=translate+to+portuguese+"
 
-    #     url_unificado = f"{url}{texto_solicitado}"
+        url_unificado = f"{url}{texto_solicitado}"
 
-    #     req_selecionada = session.get(url_unificado)
-    #     texto_traduzido = req_selecionada.html.find("#tw-target-text")[0].text
-    #     print(f"Tradução: {texto_traduzido}")
+        req_selecionada = session.get(url_unificado)
+        texto_traduzido = req_selecionada.html.find("#tw-target-text")[0].text
+        print(f"Tradução: {texto}")
+        print(f"Traduzir: {texto_traduzido}")
 
-    #     await ctx.send(f"translate: {texto_traduzido}")
+        await ctx.send(f"translate: 🫡 {texto_traduzido}")
 
 
     # TODO: mostrar horóscopo
