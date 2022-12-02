@@ -291,8 +291,10 @@ class Bot(commands.Bot):
 
     # TODO: traduzir texto por - PO: @ChicoCodes, com grande ajuda do MechanicallyDev
     @commands.command(name="traduzir")
-    async def fn_traduzir(self, ctx: commands.Context, *, texto):
+    async def fn_traduzir(self, ctx: commands.Context, *, texto = 'casadodev'):
         "Traduz o texto para inglês"
+
+        # return 'qual o texto quer traduzir?' if texto = 'casadodev' else pass
 
         session = HTMLSession()
         url = "https://www.google.com/search?q=translate+to+english+"
@@ -310,7 +312,7 @@ class Bot(commands.Bot):
 
     # TODO: traduzir texto por - PO: @ChicoCodes, com grande ajuda do MechanicallyDev
     @commands.command(name="translate")
-    async def fn_translate(self, ctx: commands.Context, *, texto):
+    async def fn_translate(self, ctx: commands.Context, *, texto = 'casadodev'):
         "Traduz o texto para portugues"
         # texto_solicitado = "+".join(ctx.content.split(" ")[1:])
 
@@ -329,17 +331,16 @@ class Bot(commands.Bot):
 
     # TODO: mostrar horóscopo
     @commands.command(name="horoscopo")
-    async def fn_horoscopo(self, ctx: commands.Context):
+    async def fn_horoscopo(self, ctx: commands.Context, *, signo = 'leao'):
         "Mostra o signo solicitado, com base no site Capricho"
 
         session = HTMLSession()
         url_signos = "https://capricho.abril.com.br/horoscopo/signo-"
-        signo_solicitado = ctx.content.split(" ")[1]
 
-        req_selecionada = session.get(f"{url_signos}{signo_solicitado}/")
+        req_selecionada = session.get(f"{url_signos}{signo}/")
         signo_selecionado = req_selecionada.html.find(".previsao_dia")[0].text
 
-        await ctx.send(f"{signo_solicitado}: {signo_selecionado}")
+        await ctx.send(f"{signo}: {signo_selecionado}")
 
 
     # TODO: Tratar localization
